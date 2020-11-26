@@ -5,21 +5,35 @@
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="assets/style.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
+        <!-- Google Sign In -->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="<用意したクライアントID>">
     </head>
     <body>
         <div class="header">
-            <div class="logo"><p><img src="assets/nectgrams_icon.png">Nectgrams</p></div>
-            <div class="contents">
-                <div class="btn product"><p>作品</p></div>
-                <div class="btn activity"><p>活動</p></div>
-                <div class="btn about"><p>このサークルについて</p></div>
-                <div class="btn faq"><p>FAQ</p></div>
-                <div class="btn contact"><p>コンタクト</p></div>
+            <div class="logo">
+                <p><img src="assets/nectgrams_icon.png">Nectgrams</p>
             </div>
-            <div class="btn login"><p>ログイン</p></div>
+            <div class="contents">
+                <a href="#"><div class="btn product"><p>作品</p></div></a>
+                <a href="#"><div class="btn activity"><p>活動</p></div></a>
+                <a href="#"><div class="btn about"><p>このサークルについて</p></div></a>
+                <a href="#"><div class="btn faq"><p>FAQ</p></div></a>
+                <a href="#"><div class="btn contact"><p>コンタクト</p></div></a>
+            </div>
+            <a href="#"><div class="btn login"><p>ログイン</p></div></a>
         </div>
-        <div class="main"></div>
+        <div class="main">
+            <div class="login-form">
+                <input class="id" type="text" placeholder="ID">
+                <input class="passwd" type="password" placeholder="パスワード">
+                <div class="submit">
+                    <a href="javascript:submit();"><p>ログイン</p></a>
+                </div>
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            </div>
+        </div>
         <div class="footer"></div>
         <script src="assets/base.js"></script>
     </body>
