@@ -9,7 +9,7 @@ web_login - 森本
 
 ### ログインシステム
 - ログインデータ  
-データベース管理 SQL or Json
+データベース管理 mySQL or JSON or CSV
 - セッション  
 Cookieで管理　失効期間1ヶ月~6ヶ月
 - プログラム  

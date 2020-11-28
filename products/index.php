@@ -11,7 +11,7 @@
     <body>
         <div class="header">
             <div class="logo">
-                <a href="#">
+                <a href="../">
                     <p><img src="assets/nectgrams_icon.png">Nectgrams</p>
                 </a>
             </div>
@@ -22,17 +22,26 @@
                 <a href="../"><div class="btn faq"><p>FAQ</p></div></a>
                 <a href="../contact/"><div class="btn contact"><p>コンタクト</p></div></a>
             </div>
-            <a href="#"><div class="btn login"><p>ログイン</p></div></a>
+            <a href="../login/"><div class="btn login"><p>ログイン</p></div></a>
         </div>
         <div class="main">
             <div class="products">
 
                 <div class="product-box">
                     <div class="box-main">
-                        <div class="image"><img src="https://cs1.anime.dmkt-sp.jp/anime_kv/img/21/94/9/21949_1_9_8b.png?1551347707000"></div>
+                        <div class="image"><img src="assets/add.png"></div>
                         <div class="text">
-                            <p class="header">Header Title</p>
-                            <p>Example Text</p>
+                            <p class="header">追加する</p>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-box">
+                    <div class="box-main">
+                        <div class="image"><img src="assets/dummy.png"></div>
+                        <div class="text">
+                            <p class="header">作品ページです</p>
+                            <p></p>
                         </div>
                     </div>
                 </div>
