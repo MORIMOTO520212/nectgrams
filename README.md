@@ -36,3 +36,12 @@ Cookieで管理　失効期間1ヶ月~6ヶ月
 HTML5/CSS, JS, PHP
 
 googleアカウントでのログインとパスワードでのログインの実装。  
+
+[base table]  
+username VARCHAR(20), password VARCHAR(100), userid VARCHAR(10)  
+
+[product table]  
+id VARCHAR(10), userid VARCHAR(10), title VARCHAR(50), message VARCHAR(200), photo VARCHAR(50)  
+
+[activity table]  
+id VARCHAR(10), userid VARCHAR(10), message VARCHAR(200), photo VARCHAR(50)  

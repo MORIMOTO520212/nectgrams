@@ -1,11 +1,16 @@
 <?php
 // MySQL オブジェクト指向
-
+//
+//    [挿入]
+//    INSERT INTO テーブル名 VALUES("", ""・・・);
+//    [指定して抽出]
+//    SELECT * FROM テーブル名 WHERE カラム名="文字列(完全一致)";
+//
 // 接続する
 $host = "localhost";
 $user = "root";
 $pass = "";
-$DB = "test";
+$DB   = "nectgrams";
 $mysqli = new mysqli($host, $user, $pass, $DB);
 
 /* 接続状況をチェック */
