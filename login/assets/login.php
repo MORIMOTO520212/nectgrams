@@ -19,14 +19,12 @@ if (mysqli_connect_errno()) {
     exit();
 }
 
-// データベースを選択する
-$mysqli->select_db("tb1");
 
-// tb1のデータを取得するクエリを実行
+// クエリを実行
 $select = " SELECT ";
 $colum  = " * ";
 $from   = " FROM ";
-$table  = " tb1 ";
+$table  = " base ";
 $query = $select.$colum.$from.$table;
 
 $result = $mysqli->query($query);
