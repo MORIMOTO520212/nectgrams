@@ -48,6 +48,7 @@ div.header .btn{
     height: 50%;
     border: solid 1px #333;
     border-radius: 30px;
+    box-sizing: border-box;
     margin: 0 5px;
 }
 div.header .btn.login{
@@ -68,14 +69,16 @@ div.product_sb{
     width: 80%;
     height: 350px;
     border: solid 1px;
+    box-sizing: border-box;
     margin: 3% auto;
 }
 
 div.product_sb .screen{
+    display: inline-block;
     width: 90%;
     height: 90%;
     border: solid 1px;
-    display: inline-block;
+    box-sizing: border-box;
     vertical-align: middle;
     margin: 0 auto;
 }
@@ -105,23 +108,82 @@ div.sb_btn_s div{
     height: 15px;
     border: solid 1px;
     border-radius: 30px;
+    box-sizing: border-box;
     margin: 0 2px;
 }
 
 div.m_b{
-    margin: 50px 160px;
+    margin: 50px auto;
     border: solid 1px;
 }
 div.m_b .title{
     display: table;
     font-size: 40px;
     border-bottom: solid 1px;
+    box-sizing: border-box;
     margin: 5px;
 }
 div.m_b .msg{
-    width: 95%;
+    width: 80%;
     font-size: 20px;
     margin: 20px auto;
+}
+
+div.m_b .faq-main{
+    width: 80%;
+    border: solid 1px;
+    box-sizing: border-box;
+    margin: 20px auto;
+}
+div.m_b .faq-main .faq-box{
+    display: inline-block;
+    vertical-align: middle;
+    width: 49%;
+    height: 300px;
+    border: solid 1px;
+    box-sizing: border-box;
+    border-radius: 30px;
+    margin: 4px;
+}
+div.faq-box .question{
+    display: inline-block;
+    border: solid 1px;
+    box-sizing: border-box;
+    margin: 10px 0;
+}
+div.faq-box .question .q-icon{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color: red;
+    border-radius: 30px;
+    margin: 20px 0 0 20px;
+}
+div.faq-box .question .a-icon{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color: blue;
+    border-radius: 30px;
+    margin: 20px 0 0 20px;
+}
+div.faq-box .question .q-icon p{
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+}
+div.faq-box .question .a-icon p{
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+}
+div.faq-box .question .q-msg{
+    display: inline-block;
+}
+div.faq-box .question .q-msg p{
+    font-size: 20px;
 }
 
 div.footer{
