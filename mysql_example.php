@@ -32,7 +32,7 @@ if(!$result){
     echo "クエリ実行失敗";
 }
 
-$userData = array(); // ユーザーデータ
+$userData = array();
 
 // データベース表示
 while($row = $result->fetch_row()){
@@ -42,14 +42,7 @@ while($row = $result->fetch_row()){
 // 終了
 $mysqli->close();
 
-$check_id = $_POST["id"];
-$check_pass = $_POST["password"];
-foreach($userData as $user){ // $user[0]-userName,  $user[1]-password(SHA256),  $user[2]-userId
-    $sql_userName = $user[0];
-    $sql_pass     = $user[1];
-    $sql_userId   = $user[2];
-    if($check_id == $sql_userName && hash("sha256", $check_pass) == $sql_pass){
-        echo $sql_userId;
-    }
+foreach($userData as $user){ // $user[0]-userName,  $user[1]-password,  $user[2]-userId
+    echo "ユーザー：".$user[0]."<br>パスワード：".$user[1]."<br>ユーザーID：".$user[2]."<br><br>";
 }
 ?>

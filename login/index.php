@@ -53,13 +53,16 @@ foreach($userData as $user){ // $user[0]-userName,  $user[1]-password(SHA256),  
 <!DOCTYPE html>
 <html>
     <head>
-        <title>作品</title>
+        <title>ログイン</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="assets/style.css">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
+        <!-- Google Sign In -->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="クライアントID">
     </head>
     <body>
         <div class="header">
@@ -79,53 +82,29 @@ foreach($userData as $user){ // $user[0]-userName,  $user[1]-password(SHA256),  
                 if($session){
                     echo "<a href=\"javascript:logout();\"><div class=\"btn login\"><p>ログアウト</p></div></a>";
                 }else{
-                    echo "<a href=\"../login/\"><div class=\"btn login\"><p>ログイン</p></div></a>";
+                    echo "<a href=\"./\"><div class=\"btn login\"><p>ログイン</p></div></a>";
                 }
             ?>
         </div>
         <div class="main">
-            <div id="products">
-                <?php
-                    if($session){
-                        echo "<div class=\"product-box\">
-                                <div class=\"box-main\">
-                                    <div class=\"image\"><img src=\"assets/add.png\"></div>
-                                    <div class=\"text\">
-                                        <p class=\"header\">追加する</p>
-                                        <p></p>
-                                    </div>
-                                </div>
-                            </div>";
-                    }
-                ?>
-                <div class="product-box">
-                    <div class="box-main">
-                        <div class="image"><img src="assets/dummy.png"></div>
-                        <div class="text">
-                            <p class="header">作品ページです</p>
-                            <p></p>
-                        </div>
-                    </div>
+            <div class="login-form">
+                <input id="id" type="text" placeholder="ID" value="">
+                <input id="passwd" type="password" placeholder="パスワード" value="">
+                <div class="submit">
+                    <a href="javascript:submit();"><p>ログイン</p></a>
                 </div>
-                <div class="product-box">
-                    <div class="box-main">
-                        <div class="image"><img src="https://pbs.twimg.com/media/DjrTeBGU4AA7q01.jpg"></div>
-                        <div class="text">
-                            <p class="header">Header Title</p>
-                            <p>Example Text</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-box">
-                    <div class="box-main">
-                        <div class="image"><img src="https://stat.ameba.jp/user_images/20180330/07/orizin4koma/62/99/j/o0600033814159924572.jpg"></div>
-                        <div class="text">
-                            <p class="header">Header Title</p>
-                            <p>Example Text</p>
-                        </div>
-                    </div>
-                </div>
-
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            </div>
+            <div class="msg">
+                <p>
+                    <?php 
+                        if($session){
+                            echo "ログインしました。作品の投稿や活動記録を利用できます。";
+                        }else{
+                            echo "作品の投稿や活動記録をするにはログインしてください。パスワードを忘れた場合は関係者に問い合わせてください。";
+                        }
+                    ?>
+                </p>
             </div>
         </div>
         <div class="footer"></div>

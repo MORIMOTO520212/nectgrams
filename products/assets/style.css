@@ -58,13 +58,13 @@ div.header .btn.login{
     margin: 18px 2% 0 0;
 }
 
-div.products{
+#products{
     width: 93%;
     text-align: justify;
 	text-justify: distribute-all-lines;
     margin: 5% auto;
 }
-div.products:after{
+#products:after{
     content:"";
     display: inline-block;
     width: 100%;

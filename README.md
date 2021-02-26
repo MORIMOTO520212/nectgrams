@@ -8,9 +8,10 @@ web_activity - 終わり次第
 web_login - 森本  
 
 ### ホームページ
-
+作品画像サイズ：5x3  
 
 ### 作品ページ
+作品画像サイズ：5x3  
 
 - プログラム  
 HTML5/CSS, JS, PHP
