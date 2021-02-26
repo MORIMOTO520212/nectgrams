@@ -61,7 +61,6 @@ div.header .btn.login{
 #products{
     width: 93%;
     text-align: justify;
-	text-justify: distribute-all-lines;
     margin: 5% auto;
 }
 #products:after{

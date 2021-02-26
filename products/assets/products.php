@@ -4,5 +4,6 @@
       created:2021.02.26
 */
 
-return file_get_contents("../../database/products.json");
+$products_data = file_get_contents("../../database/products.json");
+echo $products_data;
 ?>
