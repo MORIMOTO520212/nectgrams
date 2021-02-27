@@ -2,26 +2,25 @@
     {
         "title": "It is a products page.",
         "message": "",
-        "photo": "assets/dummy.png"
+        "photo": "assets\/dummy.png",
+        "date": "2021\/2\/27"
     },
     {
-        "title": "Header Title",
-        "message": "text here.",
-        "photo": "https://pbs.twimg.com/media/DjrTeBGU4AA7q01.jpg"
+        "title": "\u30d8\u30c3\u30c0\u30fc\u30e1\u30c3\u30bb\u30fc\u30b8",
+        "message": "\u30e1\u30c3\u30bb\u30fc\u30b8\n\u30e1\u30c3\u30bb\u30fc\u30b8",
+        "photo": "..\/database\/images\/270140.jpg",
+        "date": "2021\/2\/27"
     },
     {
-        "title": "Header Title",
-        "message": "text here.",
-        "photo": "https://stat.ameba.jp/user_images/20180330/07/orizin4koma/62/99/j/o0600033814159924572.jpg"
+        "title": "\u30d8\u30c3\u30c0\u30fc\u30e1\u30c3\u30bb\u30fc\u30b8",
+        "message": "\u30e1\u30c3\u30bb\u30fc\u30b8\n\u30e1\u30c3\u30bb\u30fc\u30b8",
+        "photo": "..\/database\/images\/859144.jpg",
+        "date": "2021\/2\/27"
     },
     {
-        "title": "Header Title",
-        "message": "text here.",
-        "photo": "https://pbs.twimg.com/media/DjrTeBGU4AA7q01.jpg"
-    },
-    {
-        "title": "Header Title",
-        "message": "text here.",
-        "photo": "https://pbs.twimg.com/media/DjrTeBGU4AA7q01.jpg"
+        "title": "\u30d8\u30c3\u30c0\u30fc\u30e1\u30c3\u30bb\u30fc\u30b8",
+        "message": "\u30e1\u30c3\u30bb\u30fc\u30b8\n\u30e1\u30c3\u30bb\u30fc\u30b8",
+        "photo": "..\/database\/images\/285197.jpg",
+        "date": "2021\/2\/27"
     }
 ]
