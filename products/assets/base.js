@@ -7,6 +7,8 @@ function logout(){
 
 var element_products = document.getElementById("products");
 
+/* product upload */
+
 
 function products_view(products){
     let source = "";

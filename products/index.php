@@ -64,6 +64,65 @@ $products = json_decode($products_data, true);
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
+        <script>
+            $(function(){
+                $('#drag-area').bind('drop', function(e){
+                    // デフォルトの挙動を停止
+                    e.preventDefault();
+                
+                    // ファイル情報を取得
+                    var files = e.originalEvent.dataTransfer.files;
+                
+                    uploadFiles(files);
+                
+                }).bind('dragenter', function(){
+                    // デフォルトの挙動を停止
+                    return false;
+                }).bind('dragover', function(){
+                    // デフォルトの挙動を停止
+                    return false;
+                });
+                
+                $('#btn').click(function() {
+                    // ダミーボタンとinput[type="file"]を連動
+                    console.log("drop button");
+                    $('input[type="file"]').click();
+                });
+                
+                $('input[type="file"]').change(function(){
+                    // ファイル情報を取得
+                    var files = this.files;
+                
+                    uploadFiles(files);
+                });
+            });
+            
+            function uploadFiles(files) {
+                // FormDataオブジェクトを用意
+                var fd = new FormData();
+                
+                // ファイルの個数を取得
+                var filesLength = files.length;
+                
+                // ファイル情報を追加
+                for (var i = 0; i < filesLength; i++) {
+                    console.log("get file name: "+files[i]["name"]);
+                    fd.append("files[]", files[i]);
+                }
+                
+                // Ajaxでアップロード処理をするファイルへ内容渡す
+                $.ajax({
+                    url: "assets/upload.php",
+                    type: "POST",
+                    data: fd,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                    alert(data);
+                    }
+                });
+            }
+        </script>
     </head>
     <body>
         <div class="header">
@@ -89,6 +148,21 @@ $products = json_decode($products_data, true);
         </div>
         <div class="main">
             <div id="products">
+                <div class="product-box">
+                    <div class="box-main">
+                        <div id="drag-area" class="image hover">
+                            <img src="assets/add.png">
+                            <input type="file" multiple="multiple" style="display:none;" name="files"/>
+                            <button id="btn">ファイルを選択</button>
+                            <div class="create-btn"><a href="javascript:">投稿</a></div>
+                        </div>
+                        <div class="text">
+                            <input id="header" type="text" placeholder="ここへタイトル">
+                            <!--<input id="message" type="text" placeholder="ここへメッセージ">-->
+                            <textarea id="message" placeholder="ここへメッセージ"></textarea>
+                        </div>
+                    </div>
+                </div>
                 <?php
                     if($session){ // echo "の後に改行しないとcssのbeforeとafterが反映されない
                         echo " 
