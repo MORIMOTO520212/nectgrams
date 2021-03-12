@@ -1,3 +1,10 @@
+<?php
+// get products json data
+$products_data = file_get_contents("database/products.json");
+$products_data = json_encode($products_data);
+//$products_data = mb_convert_encoding($products_data, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+//$products = json_decode($products_data, true);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,9 +16,12 @@
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
     </head>
     <body>
+        <script>
+            var products = JSON.parse(<?php echo $products_data ?>);
+        </script>
         <div class="header">
             <div class="logo">
-                <a href="index.html">
+                <a href="../nectgrams">
                     <p><img src="assets/nectgrams_icon.png">Nectgrams</p>
                 </a>
             </div>
@@ -19,7 +29,7 @@
                 <a href="products/"><div class="btn product"><p>作品</p></div></a>
                 <a href="activity/"><div class="btn activity"><p>活動</p></div></a>
                 <a href="about/"><div class="btn about"><p>このサークルについて</p></div></a>
-                <a href="javascript:scrollTo(0, 100);"><div class="btn faq"><p>FAQ</p></div></a>
+                <a href="javascript:scrollTo(0, 1300);"><div class="btn faq"><p>FAQ</p></div></a>
                 <a href="contact/"><div class="btn contact"><p>コンタクト</p></div></a>
             </div>
             <div class="btn login"><a href="login/"><p>ログイン</p></a></div>
@@ -27,26 +37,18 @@
         <div class="main">
             <div class="product_sb">
                 <div class="scroll">
+                    <a href="javascript:scroll_view('back');"></a>
                     <div class="btn"><img src="assets/left_arrow.png"></div>
                 </div>
                 <div class="screen">
-                    <img src="sample_images/img_01.jpg">
-                    <img src="sample_images/img_03.png">
+                    <img id="scroll_img_1" src="sample_images/img_01.jpg">
+                    <img id="scroll_img_2" src="sample_images/img_03.png">
                 </div>
                 <div class="scroll">
+                    <a href="javascript:scroll_view('next');"></a>
                     <div class="btn"><img src="assets/right_arrow.png"></div>
                 </div>
-                <div id="sb_btn_s">
-                    <div><a href="javascript:"></a></div>
-                    <div><a href="javascript:"></a></div>
-                    <div><a href="javascript:"></a></div>
-                    <div><a href="javascript:"></a></div>
-                    <div><a href="javascript:"></a></div>
-                    <div><a href="javascript:"></a></div>
-                    <div><a href="javascript:"></a></div>
-                    <div><a href="javascript:"></a></div>
-                    <div><a href="javascript:"></a></div>
-                </div>
+                <div id="sb_btn_s"></div>
             </div>
             <div class="m_b">
                 <div class="title"><p>共　創</p></div>
@@ -54,9 +56,9 @@
                     <p>
                         チームとして最高のモノを作り上げる環境を提供します。プログラミングは大学でも学び、
                         かつ独学でも習得できます。Nectgramsはプログラミングスキルの向上を一つの結果と捉え、より実践的かつその応用の場として、
-                        メンバー一人一人がプロジェクトを着々と達成し、成果を残す。複数人の力でより大きなものを作り上げることができる。
+                        メンバー一人ひとりがプロジェクトを着々と達成し、成果を残す。複数人の力でより大きなものを作り上げることができる。
                         それを目的としています。その為、活動報告や進捗チェックが頻繁に行われたり、班が複数存在し、
-                        取り扱うテーマに制限がないなどの特徴があります。一方、「個人制作を楽しみ共有する」「プログラミングのスキルアップをする」
+                        取り扱うテーマに制限がないなどの特徴があります。一方、「個人制作を楽しみを共有する」「プログラミングのスキルアップをする」
                         といった活動は基本的にサポートされません。
                     </p>
                 </div>
@@ -64,9 +66,15 @@
             <div class="m_b">
                 <div class="title"><p>このサークルについて</p></div>
                 <div class="msg">
-                    <p>ここにはサークルの各班についての紹介文を書きます。</p>
+                    <p>各班に分かれてそれぞれの活動を行います。</p>
                     <div class="team"><p>・WEB班</p></div>
                     <div class="msg"><p>WEB班の紹介文を書きます。</p></div>
+                    <div class="team"><p>・NNC深層学習班</p></div>
+                    <div class="msg"><p></p></div>
+                    <div class="team"><p>・アプリ開発班</p></div>
+                    <div class="msg"><p></p></div>
+                    <div class="team"><p>・Unityゲーム開発班</p></div>
+                    <div class="msg"><p></p></div>
                 </div>
             </div>
             <div class="m_b">
@@ -128,6 +136,20 @@
                             </div>
                         </div>
                     </div>
+                    <div class="faq-box">
+                        <div class="question">
+                            <div class="q-icon"><p>Q</p></div>
+                            <div class="q-msg">
+                                <p>班をかけ持つことはできますか。</p>
+                            </div>
+                        </div>
+                        <div class="question">
+                            <div class="a-icon"><p>A</p></div>
+                            <div class="q-msg">
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -144,5 +166,6 @@
                 </div>
             </div>
         </div>
+        <script src="assets/base.js"></script>
     </body>
 </html>

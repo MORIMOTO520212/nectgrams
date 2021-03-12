@@ -53,7 +53,7 @@ foreach($userData as $user){ // $user[0]-userName,  $user[1]-password(SHA256),  
 <!DOCTYPE html>
 <html>
     <head>
-        <title>ログイン</title>
+        <title>Nectgrams - ログイン</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="assets/style.css">
         <meta name="viewport" content="width=device-width,initial-scale=1">

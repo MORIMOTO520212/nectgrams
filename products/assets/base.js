@@ -80,7 +80,7 @@ function submit(){
     }
     let title = element_header.value;
     let message = element_message.value;
-    let photo = "../database/images/" + up_filename;
+    let photo = "database/images/" + up_filename;
     $.post("assets/submit.php", {"title": title, "message": message, "photo": photo}, function(data){
         console.log("product submit.");
         console.log(data);

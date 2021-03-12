@@ -57,7 +57,7 @@ $products = json_decode($products_data, true);
 <!DOCTYPE html>
 <html>
     <head>
-        <title>作品</title>
+        <title>Nectgrams - 作品</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="stylesheet" type="text/css" href="assets/style.css">
@@ -115,7 +115,7 @@ $products = json_decode($products_data, true);
                         <div class=\"product-box\">
                             <div class=\"box-main\">
                                 <div class=\"image\">
-                                    <img src=\"".$product["photo"]."\">
+                                    <img src=\"../".$product["photo"]."\">
                                     <div class=\"date\"><p>".$product["date"]."</p></div>
                                 </div>
                                 <div class=\"text\">

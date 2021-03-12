@@ -10,6 +10,9 @@ web_login - 森本
 ### ホームページ
 作品画像サイズ：5x3  
 
+FAQ  
+班をかけ持つことはできますか。  
+
 ### 作品ページ
 作品画像サイズ：5x3  
 
@@ -32,7 +35,7 @@ HTML5/CSS, JS, PHP
 - ログインデータ  
 データベース管理 mySQL
 - セッション  
-Cookieで管理　失効期間1ヶ月~6ヶ月
+Cookieで管理　失効期間：ブラウザを閉じるまで  
 - プログラム  
 HTML5/CSS, JS, PHP
 
@@ -46,3 +49,14 @@ id VARCHAR(10), userid VARCHAR(10), title VARCHAR(50), message VARCHAR(200), pho
 
 [activity table]  
 id VARCHAR(10), userid VARCHAR(10), message VARCHAR(200), photo VARCHAR(50)  
+
+### コンタクトページ
+サークルの加入についてはサークル管理者に連絡してください。
+
+連絡先
+サークル管理
+- 稲野辺 快生 Twitter Discord
+ホームページ管理
+- 森本 悠真 Twitter Discord
+- 近藤 紗帆 Twitter Discord
+- 栗田 悠矢 Twitter Discord
