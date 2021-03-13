@@ -1,3 +1,59 @@
+<?php
+// 接続する
+$host = "localhost";
+$user = "root";
+$pass = "";
+$DB   = "nectgrams";
+$mysqli = new mysqli($host, $user, $pass, $DB);
+
+/* 接続状況をチェック */
+if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
+}
+
+// クエリ作成
+$select = " SELECT ";
+$colum  = " * ";
+$from   = " FROM ";
+$table  = " base ";
+$query = $select.$colum.$from.$table;
+
+$result = $mysqli->query($query); // クエリ実行
+if(!$result){
+    echo "クエリ実行失敗";
+}
+
+$userData = array(); // ユーザーデータ
+
+// データベース表示
+while($row = $result->fetch_row()){
+    $userData[] = $row;
+}
+
+// 終了
+$mysqli->close();
+
+
+// ユーザーセッション
+$session = false;
+$userSession = ""; // ログインしてない場合  
+foreach($_COOKIE as $key => $value){ // cookie確認と取得
+    if("session" == $key){
+          $userSession = $_COOKIE["session"];
+    }
+}
+foreach($userData as $user){ // $user[0]-userName,  $user[1]-password(SHA256),  $user[2]-userId
+    $sql_userId = $user[2];
+    if($userSession == $sql_userId){
+        $session = true;
+    }
+}
+// get products json data
+$activities_data = file_get_contents("../database/activity.json");
+$activities_data = mb_convert_encoding($activities_data, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+$activities = json_decode($activities_data, true);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,7 +73,7 @@
             </div>
             <div class="contents">
                 <a href="../products/"><div class="btn product"><p>作品</p></div></a>
-                <a href="../activity/"><div class="btn activity"><p>活動</p></div></a>
+                <a href="../activity/"><div class="btn activity" style="border:solid 2px #333"><p>活動</p></div></a>
                 <a href="../"><div class="btn about"><p>このサークルについて</p></div></a>
                 <a href="../"><div class="btn faq"><p>FAQ</p></div></a>
                 <a href="../contact/"><div class="btn contact"><p>コンタクト</p></div></a>
@@ -66,7 +122,19 @@
 
             </div>
         </div>
-        <div class="footer"></div>
+        <div class="footer">
+            <div class="f-main">
+                <div class="f-title"><p>Nectgrams</p></div>
+                <div class="f-msg"><p>ここへフッターのメッセージを書きます。</p></div>
+                <div class="f-link">
+                    <a href="#">作品</a>
+                    <a href="#">活動</a>
+                    <a href="#">このサークルについて</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">コンタクト</a>
+                </div>
+            </div>
+        </div>
         <script src="assets/base.js"></script>
     </body>
 </html>

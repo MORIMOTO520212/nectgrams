@@ -72,6 +72,7 @@ div.msg{
 }
 div.msg p{
     font-size: 20px;
+    padding: 5px;
 }
 div.contact-main{
     width: 45%;
@@ -115,7 +116,8 @@ div.manager div p{
 }
 
 div.footer{
-    position: relative;
+    position: absolute;
+    bottom: 0;
     width: 100%;
     height: 130px;
     background-color: #000000;

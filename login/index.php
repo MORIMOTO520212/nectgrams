@@ -59,10 +59,11 @@ foreach($userData as $user){ // $user[0]-userName,  $user[1]-password(SHA256),  
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="assets/sha256.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
         <!-- Google Sign In -->
         <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <meta name="google-signin-client_id" content="クライアントID">
+        <meta name="google-signin-client_id" content="602046748429-g7tk5ermd7p7vcksmt55eisldsnv51mh.apps.googleusercontent.com">
     </head>
     <body>
         <div class="header">
@@ -80,9 +81,9 @@ foreach($userData as $user){ // $user[0]-userName,  $user[1]-password(SHA256),  
             </div>
             <?php
                 if($session){
-                    echo "<a href=\"javascript:logout();\"><div class=\"btn login\"><p>ログアウト</p></div></a>";
+                    echo "<a href=\"javascript:logout();\"><div class=\"btn login\" style=\"border:solid 2px #333\"><p>ログアウト</p></div></a>";
                 }else{
-                    echo "<a href=\"./\"><div class=\"btn login\"><p>ログイン</p></div></a>";
+                    echo "<a href=\"./\"><div class=\"btn login\"  style=\"border:solid 2px #333\"><p>ログイン</p></div></a>";
                 }
             ?>
         </div>

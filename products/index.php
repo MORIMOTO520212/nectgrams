@@ -76,7 +76,7 @@ $products = json_decode($products_data, true);
                 </a>
             </div>
             <div class="contents">
-                <a href="../products/"><div class="btn product"><p>作品</p></div></a>
+                <a href="../products/"><div class="btn product" style="border:solid 2px #333"><p>作品</p></div></a>
                 <a href="../activity/"><div class="btn activity"><p>活動</p></div></a>
                 <a href="../"><div class="btn about"><p>このサークルについて</p></div></a>
                 <a href="../"><div class="btn faq"><p>FAQ</p></div></a>
@@ -128,7 +128,19 @@ $products = json_decode($products_data, true);
                 ?>
             </div>
         </div>
-        <div class="footer"></div>
+        <div class="footer">
+            <div class="f-main">
+                <div class="f-title"><p>Nectgrams</p></div>
+                <div class="f-msg"><p>ここへフッターのメッセージを書きます。</p></div>
+                <div class="f-link">
+                    <a href="#">作品</a>
+                    <a href="#">活動</a>
+                    <a href="#">このサークルについて</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">コンタクト</a>
+                </div>
+            </div>
+        </div>
         <script src="assets/base.js"></script>
     </body>
 </html>

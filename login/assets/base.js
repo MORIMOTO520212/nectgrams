@@ -27,6 +27,31 @@ function submit(){
     setTimeout(reload, 1000);
 }
 
+/* Google Signin */
+const sha256 = new jsSHA("SHA-256", "TEXT");
+function onSignIn(googleUser){
+    let profile = googleUser.getBasicProfile();
+    let hash = sha256.update(profile.getId()); // user id hash create
+    $.ajax({
+        type: "POST",
+        url: "assets/login.php",
+        data: {"g_signin_hash": hash},
+        success: function(sql_userId){
+            if(sql_userId){
+                console.log(sql_userId);
+                document.cookie = "session="+sql_userId+";path=/";
+            }else{
+                alert("このアカウントではログインできません。");
+            }  
+        },
+        error: function(){
+            alert("通信エラー.");
+        }
+    });
+    function reload(){ location.reload(); }
+    setTimeout(reload, 1000);
+}
+
 /* logout */
 function logout(){
     document.cookie = "session=;path=/";
