@@ -85,38 +85,35 @@ $activities = json_decode($activities_data, true);
 
                 <div class="product-box">
                     <div class="box-main">
-                        <div class="image"><img src="assets/add.png"></div>
-                        <div class="text">
-                            <p class="header">追加する</p>
-                            <p></p>
+                        <div class="contributor">
+                            <p>2021/3/15 WEB班 森本悠真</p>
+                        </div>
+                        <div class="main">
+                            <div class="record">
+                                <li id="target" class="title">目標</li>
+                                <div class="contents">ホームページのCSSでのレイアウト設計を完成させる。</div>
+                            </div>
+                            <div class="record">
+                                <li id="do" class="title">できたこと</li>
+                                <div class="contents">ホームページのヘッダーとフッターのレイアウト設計を完成させた。レスポンシブ対応はこれから。</div>
+                            </div>
+                            <div class="record">
+                                <li id="share" class="title">共有したいこと</li>
+                                <div class="contents">Let's Encryptという無料のSSLがあるらしい。</div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="product-box">
                     <div class="box-main">
-                        <div class="image"><img src="assets/dummy.png"></div>
-                        <div class="text">
-                            <p class="header">活動ページです</p>
-                            <p></p>
-                        </div>
                     </div>
                 </div>
                 <div class="product-box">
                     <div class="box-main">
-                        <div class="image"><img src="https://pbs.twimg.com/media/DjrTeBGU4AA7q01.jpg"></div>
-                        <div class="text">
-                            <p class="header">Header Title</p>
-                            <p>Example Text</p>
-                        </div>
                     </div>
                 </div>
                 <div class="product-box">
                     <div class="box-main">
-                        <div class="image"><img src="https://stat.ameba.jp/user_images/20180330/07/orizin4koma/62/99/j/o0600033814159924572.jpg"></div>
-                        <div class="text">
-                            <p class="header">Header Title</p>
-                            <p>Example Text</p>
-                        </div>
                     </div>
                 </div>
 
