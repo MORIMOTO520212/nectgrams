@@ -1,12 +1,25 @@
 [
     {
         "kind": "person",
-        "date": "date",
-        "group": "affiliation group",
-        "contributor": "contributor",
-        "target": "target",
-        "do": "do",
-        "share": "share"
+        "mid": "",
+        "date": "2020/10/06",
+        "group": "\u30a2\u30d7\u30ea\u958b\u767a\u73ed",
+        "contributor": "\u5ca9\u7530\u96c4\u6210",
+        "target": "Android Studio\u306e\u958b\u767a\u74b0\u5883\u3092\u6574\u3048\u308b",
+        "complete": 100,
+        "do": "\u30fc\u65e7\u5165\u529b\u30d5\u30a9\u30fc\u30e0\u306e\u70ba\u30c7\u30fc\u30bf\u306a\u3057\u30fc",
+        "share": ""
+    },
+    {
+        "kind": "person",
+        "mid": "",
+        "date": "2020/10/07",
+        "group": "\u30a2\u30d7\u30ea\u958b\u767a\u73ed",
+        "contributor": "\u6c60\u90e8\u601c\u5948",
+        "target": "Android Studio\u306e\u74b0\u5883\u8a2d\u5b9a\u3092\u3059\u308b",
+        "complete": 100,
+        "do": "\u30fc\u65e7\u5165\u529b\u30d5\u30a9\u30fc\u30e0\u306e\u70ba\u30c7\u30fc\u30bf\u306a\u3057\u30fc",
+        "share": ""
     },
     {
         "kind": "group"

@@ -61,6 +61,7 @@ $activities = json_decode($activities_data, true);
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="assets/style.css">
         <meta name="viewport" content="width=device-width,initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
     </head>
@@ -81,7 +82,7 @@ $activities = json_decode($activities_data, true);
             <a href="../login/"><div class="btn login"><p>ログイン</p></div></a>
         </div>
         <div class="main">
-            <div class="activities">
+            <div id="activities" class="activities">
 
                 <div class="activity-box">
                     <div class="box-main">
@@ -113,34 +114,6 @@ $activities = json_decode($activities_data, true);
                         </div>
                     </div>
                 </div>
-                <?php
-                    // --- person activity view ---
-                    foreach($activities as $activity){
-                        if("person" != $activity["kind"]){ continue; }
-                        echo "
-                        <div class=\"activity-box\">
-                            <div class=\"box-main\">
-                                <div class=\"contributor\">
-                                    <p>".$activity["date"]." ".$activity["group"]." ".$activity["contributor"]."</p>
-                                </div>
-                                <div class=\"main\">
-                                    <div class=\"record\">
-                                        <li id=\"target\" class=\"title\">目標</li>
-                                        <div class=\"contents\"><p>".$activity["target"]."</p></div>
-                                    </div>
-                                    <div class=\"record\">
-                                        <li id=\"do\" class=\"title\">できたこと</li>
-                                        <div class=\"contents\"><p>".$activity["do"]."</p></div>
-                                    </div>
-                                    <div class=\"record\">
-                                        <li id=\"share\" class=\"title\">共有したいこと</li>
-                                        <div class=\"contents\"><p>".$activity["share"]."</p></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>";
-                    }
-                ?>
 
             </div>
         </div>
