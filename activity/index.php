@@ -81,9 +81,39 @@ $activities = json_decode($activities_data, true);
             <a href="../login/"><div class="btn login"><p>ログイン</p></div></a>
         </div>
         <div class="main">
-            <div class="products">
+            <div class="activities">
 
-                <div class="product-box">
+                <div class="activity-box">
+                    <div class="box-main">
+                        <div class="contributor inp">
+                            <input id="date" type="date" value="2021-03-16">
+                            <input id="group" type="text" placeholder="所属班">
+                            <input id="contributor" type="text" placeholder="入力者">
+                            <div class="create-btn"><a href="javascript:submit();">投稿</a></div>
+                        </div>
+                        <div class="main">
+                            <div class="record">
+                                <li class="title">目標</li>
+                                <div class="contents">
+                                    <textarea id="target" placeholder="今回の活動目標を記入してください。"></textarea>
+                                </div>
+                            </div>
+                            <div class="record">
+                                <li class="title">できたこと</li>
+                                <div class="contents">
+                                    <textarea id="do" placeholder="活動した内容について記入してください。"></textarea>
+                                </div>
+                            </div>
+                            <div class="record">
+                                <li class="title">共有したいこと</li>
+                                <div class="contents">
+                                <textarea id="share" placeholder="全体や班の内で共有したいことや疑問点があればそれについて記入してください。"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="activity-box">
                     <div class="box-main">
                         <div class="contributor">
                             <p>2021/3/15 WEB班 森本悠真</p>
@@ -91,29 +121,17 @@ $activities = json_decode($activities_data, true);
                         <div class="main">
                             <div class="record">
                                 <li id="target" class="title">目標</li>
-                                <div class="contents">ホームページのCSSでのレイアウト設計を完成させる。</div>
+                                <div class="contents"><p>ホームページのCSSでのレイアウト設計を完成させる。</p></div>
                             </div>
                             <div class="record">
                                 <li id="do" class="title">できたこと</li>
-                                <div class="contents">ホームページのヘッダーとフッターのレイアウト設計を完成させた。レスポンシブ対応はこれから。</div>
+                                <div class="contents"><p>ホームページのヘッダーとフッターのレイアウト設計を完成させた。レスポンシブ対応はこれから。</p></div>
                             </div>
                             <div class="record">
                                 <li id="share" class="title">共有したいこと</li>
-                                <div class="contents">Let's Encryptという無料のSSLがあるらしい。</div>
+                                <div class="contents"><p>Let's Encryptという無料のSSLがあるらしい。</p></div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="product-box">
-                    <div class="box-main">
-                    </div>
-                </div>
-                <div class="product-box">
-                    <div class="box-main">
-                    </div>
-                </div>
-                <div class="product-box">
-                    <div class="box-main">
                     </div>
                 </div>
 

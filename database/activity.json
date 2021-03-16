@@ -1,20 +1,14 @@
 [
     {
-        "title": "\u30d8\u30c3\u30c0\u30fc\u30e1\u30c3\u30bb\u30fc\u30b8",
-        "message": "\u30e1\u30c3\u30bb\u30fc\u30b8\n\u30e1\u30c3\u30bb\u30fc\u30b8",
-        "photo": "database\/images\/270140.jpg",
-        "date": "2021\/2\/27"
+        "kind": "person",
+        "date": "date",
+        "group": "affiliation group",
+        "contributor": "contributor",
+        "target": "target",
+        "do": "do",
+        "share": "share"
     },
     {
-        "title": "\u30d8\u30c3\u30c0\u30fc\u30e1\u30c3\u30bb\u30fc\u30b8",
-        "message": "\u30e1\u30c3\u30bb\u30fc\u30b8\n\u30e1\u30c3\u30bb\u30fc\u30b8",
-        "photo": "database\/images\/859144.jpg",
-        "date": "2021\/2\/27"
-    },
-    {
-        "title": "\u30d8\u30c3\u30c0\u30fc\u30e1\u30c3\u30bb\u30fc\u30b8",
-        "message": "\u30e1\u30c3\u30bb\u30fc\u30b8\n\u30e1\u30c3\u30bb\u30fc\u30b8",
-        "photo": "database\/images\/285197.jpg",
-        "date": "2021\/2\/27"
+        "kind": "group"
     }
 ]
