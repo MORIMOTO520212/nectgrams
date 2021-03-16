@@ -71,11 +71,11 @@ function submit(){
         return 0;
     }
     if(!element_header.value){
-        alert("ヘッダーメッセージがセットされていません。");
+        alert("ヘッダーメッセージが記入されていません。");
         return 0;
     }
     if(!element_message.value){
-        alert("メッセージがセットされていません。");
+        alert("メッセージが記入されていません。");
         return 0;
     }
     let title = element_header.value;

@@ -50,7 +50,7 @@ foreach($userData as $user){ // $user[0]-userName,  $user[1]-password(SHA256),  
     }
 }
 // get products json data
-$activities_data = file_get_contents("../database/activity.json");
+$activities_data = file_get_contents("../database/activities.json");
 $activities_data = mb_convert_encoding($activities_data, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
 $activities = json_decode($activities_data, true);
 ?>
@@ -113,27 +113,34 @@ $activities = json_decode($activities_data, true);
                         </div>
                     </div>
                 </div>
-                <div class="activity-box">
-                    <div class="box-main">
-                        <div class="contributor">
-                            <p>2021/3/15 WEB班 森本悠真</p>
-                        </div>
-                        <div class="main">
-                            <div class="record">
-                                <li id="target" class="title">目標</li>
-                                <div class="contents"><p>ホームページのCSSでのレイアウト設計を完成させる。</p></div>
+                <?php
+                    // --- person activity view ---
+                    foreach($activities as $activity){
+                        if("person" != $activity["kind"]){ continue; }
+                        echo "
+                        <div class=\"activity-box\">
+                            <div class=\"box-main\">
+                                <div class=\"contributor\">
+                                    <p>".$activity["date"]." ".$activity["group"]." ".$activity["contributor"]."</p>
+                                </div>
+                                <div class=\"main\">
+                                    <div class=\"record\">
+                                        <li id=\"target\" class=\"title\">目標</li>
+                                        <div class=\"contents\"><p>".$activity["target"]."</p></div>
+                                    </div>
+                                    <div class=\"record\">
+                                        <li id=\"do\" class=\"title\">できたこと</li>
+                                        <div class=\"contents\"><p>".$activity["do"]."</p></div>
+                                    </div>
+                                    <div class=\"record\">
+                                        <li id=\"share\" class=\"title\">共有したいこと</li>
+                                        <div class=\"contents\"><p>".$activity["share"]."</p></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="record">
-                                <li id="do" class="title">できたこと</li>
-                                <div class="contents"><p>ホームページのヘッダーとフッターのレイアウト設計を完成させた。レスポンシブ対応はこれから。</p></div>
-                            </div>
-                            <div class="record">
-                                <li id="share" class="title">共有したいこと</li>
-                                <div class="contents"><p>Let's Encryptという無料のSSLがあるらしい。</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </div>";
+                    }
+                ?>
 
             </div>
         </div>
