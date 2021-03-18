@@ -82,8 +82,17 @@ $activities = json_decode($activities_data, true);
             <a href="../login/"><div class="btn login"><p>ログイン</p></div></a>
         </div>
         <div class="main">
+            <div class="control">
+                <div class="kc">
+                    <div id="person_kind" class="pgc-btn left-btn" style><a href="#" onclick="activities_view('person',0);return false;"></a><p id="pk_p" style>個人記録</p></div>
+                    <div id="group_kind" class="pgc-btn right-btn" style><a href="#" onclick="activities_view('group',0);return false;"></a><p id="gk_p" style>班記録</p></div>
+                </div>
+                <div class="kc">
+                    <div id="colum_normal" class="pgc-btn left-btn" style><a href="#" onclick="activities_view(0,'normal');return false;"><p id="cn_p" style>新しい順</p></a></div>
+                    <div id="colum_reverse" class="pgc-btn right-btn" style><a href="#" onclick="activities_view(0,'reverse');return false;"></a><p id="cr_p" style>古い順</p></div>
+                </div>
+            </div>
             <div id="activities" class="activities">
-
                 <div class="activity-box">
                     <div class="box-main">
                         <div class="contributor inp">
@@ -114,7 +123,6 @@ $activities = json_decode($activities_data, true);
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="footer">

@@ -31,7 +31,9 @@ function submit(){
 const sha256 = new jsSHA("SHA-256", "TEXT");
 function onSignIn(googleUser){
     let profile = googleUser.getBasicProfile();
-    let hash = sha256.update(profile.getId()); // user id hash create
+    // user id hash create
+    sha256.update(profile.getId());
+    let hash = sha256.getHash("HEX");
     $.ajax({
         type: "POST",
         url: "assets/login.php",

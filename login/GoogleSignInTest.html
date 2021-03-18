@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Nectgrams - Google Signin Test</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <!-- Google Sign In -->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="602046748429-g7tk5ermd7p7vcksmt55eisldsnv51mh.apps.googleusercontent.com">
+        <!-- Style Sheet -->
+        <style>
+            html{width:100%;height:100%;}
+            body{width:100%;height:100%;margin:0;}
+            div.g-signin2{width:120px;height:36px;margin:21%auto;}
+        </style>
+        <!-- JavaScript -->
+        <script>
+            function onSignIn(googleUser) {
+                let profile = googleUser.getBasicProfile();
+                console.log(profile.getId()); // string
+            }
+        </script>
+    </head>
+    <body>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    </body>
+</html>

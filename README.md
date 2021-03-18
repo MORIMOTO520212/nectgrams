@@ -9,9 +9,9 @@
 ・Google Sign-InとmySQLを連結させる。
 
 [活動ページ]
+・base.js - 日付での並び替え
 ・Googleスプレッドシートと二重でデータ管理
 ・個人活動と班活動で切り替えるスイッチ。
-・<個人活動>記録に表示する情報は活動日、入力者、所属班、今回の到達目標、できたこと、全体や班で共有したい発見・疑問など
 ・<班活動>記録に表示する情報は活動日、入力者、所属班、種別(班の新規作成・班の活動に関する更新/活動の経過報告)、活動内容、班での製作物、班長の名前、班員の名前、製作物の完成度、班全体の活動状況
 ・ログインユーザーのみ進捗グラフを表示。
 
@@ -55,14 +55,24 @@ HTML5/CSS, JS, PHP
 
 googleアカウントでのログインとパスワードでのログインの実装。  
 
-[base table]  
-username VARCHAR(20), password VARCHAR(100), userid VARCHAR(10)  
+ユーザー管理テーブル  
+CREATE TABLE users(id VARCHAR(50),password VARCHAR(64),gsh VARCHAR(64),mid VARCHAR(12),name VARCHAR(100),'group' VARCHAR(100),'count' INT,'last' VARCHAR(10));  
 
-[product table]  
-id VARCHAR(10), userid VARCHAR(10), title VARCHAR(50), message VARCHAR(200), photo VARCHAR(50)  
+[users table]
+カラム     説明                エンコード          型
+id        ユーザーID           半角英数+記号       varchar(50)  
+password  パスワード           SHA256 HEX         varchar(64)  
+gsh       Google SignIn Hash  SHA256 HEX         varchar(64)  
+mid       ユーザー識別ID       半角英数(12文字)    varchar(12)  
+name      ユーザー名           base64             varchar(100)  
+group     所属班               base64             varchar(100)  
+count     アクセスカウンタ      int                int  
+last      最終アクセス日時      yyyy/mm/dd         varchar(10)  
 
-[activity table]  
-id VARCHAR(10), userid VARCHAR(10), message VARCHAR(200), photo VARCHAR(50)  
+挿入形式：  
+INSERT INTO users VALUES('ID', 'pass-sha256', 'google-signin-sha256', 'mid, 'name-base64', 'group-base64', 0, '2021/03/18');  
+
+
 
 ### コンタクトページ
 サークルの加入についてはサークル管理者に連絡してください。
