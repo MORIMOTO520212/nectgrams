@@ -19,28 +19,14 @@ $products_data = json_encode($products_data);
         <script>
             var products = JSON.parse(<?php echo $products_data ?>);
         </script>
-        <div class="header">
-            <div class="logo">
-                <a href="../nectgrams">
-                    <p><img src="assets/nectgrams_icon.png">Nectgrams</p>
-                </a>
-            </div>
-            <div class="contents">
-                <a href="products/"><div class="btn product"><p>作品</p></div></a>
-                <a href="activity/"><div class="btn activity"><p>活動</p></div></a>
-                <a href="about/"><div class="btn about"><p>このサークルについて</p></div></a>
-                <a href="javascript:scrollTo(0, 1300);"><div class="btn faq"><p>FAQ</p></div></a>
-                <a href="contact/"><div class="btn contact"><p>コンタクト</p></div></a>
-            </div>
-            <div class="btn login"><a href="login/"><p>ログイン</p></a></div>
-        </div>
+        <?php require "container/header.html" ?>
         <div class="main">
             <div class="product_sb">
                 <div class="scroll">
                     <a href="javascript:scroll_view('back');"></a>
                     <div class="btn"><img src="assets/left_arrow.png"></div>
                 </div>
-                <div class="screen">
+                <div id="screen" class="screen">
                     <img id="scroll_img_1" src="sample_images/img_01.jpg">
                     <img id="scroll_img_2" src="sample_images/img_03.png">
                 </div>

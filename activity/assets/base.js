@@ -5,16 +5,33 @@ function logout(){
     setTimeout(reload, 1000);
 }
 
+function sort_database(jsonData) { /* yyyy/mm/dd sort */
+    var sort_db = [];
+    var _jsonData = [];
+
+    // sort data
+    for(let i=0; i<jsonData.length; i++){
+        let sp_date = jsonData[i]["date"].split("/");
+        sort_db.push(sp_date[0]*12*30 + sp_date[1]*30 + sp_date[2]); // day count
+    }
+    sort_db.sort();
+    while(sort_db.length){
+        for(let i=0; i<jsonData.length; i++){
+            let sp_date = jsonData[i]["date"].split("/");
+            let day_count = sp_date[0]*12*30 + sp_date[1]*30 + sp_date[2];
+            if(day_count == sort_db[0]){
+                _jsonData.push(jsonData[i]);
+                sort_db.shift();
+            }
+        }
+    }
+    return _jsonData;
+}
+
 /* activities viewer , viewer controller */
 var activities = [];
-var sort_db = [];
-function getData_activities(jsonData){
-    activities = jsonData;
-    for(let i=0; i<activities.length; i++){
-        let sp_date = activities[i]["date"].split("/");
-        sp_date[0]*12*30 + sp_date[1]*30 + sp_date[2]
-    }
-
+function getData_activities(jsonData) {
+    activities = sort_database(jsonData);
 }
 $.post("../getData.php", {"dataType": "activity"}, function(getData){
     var jsonData = JSON.parse(getData);
@@ -40,8 +57,8 @@ function activities_view(kind, colum) { // kind - person, group   colum - normal
     if(0 == colum){colum = _colum}
     else{_colum = colum}
     var source = "";
-    if("reverse" == colum) {
-        for(let i=0; i<activities.length; i++) {
+    if("reverse" == colum){
+        for(let i=0; i<activities.length; i++){
             if(kind != activities[i]["kind"]){continue}
             source += "\
             <div class=\"activity-box\"><div class=\"box-main\">\
@@ -57,8 +74,8 @@ function activities_view(kind, colum) { // kind - person, group   colum - normal
         e_colum_reverse.setAttribute("style","background-color:#3d3c4c;");
         e_cr_p.setAttribute("style", "color:#eee;");
     }
-    if("normal" == colum) {
-        for(let i=activities.length-1; 0<=i; i--) {
+    if("normal" == colum){
+        for(let i=activities.length-1; 0<=i; i--){
             if(kind != activities[i]["kind"]){continue}
             source += "\
             <div class=\"activity-box\"><div class=\"box-main\">\
@@ -74,13 +91,13 @@ function activities_view(kind, colum) { // kind - person, group   colum - normal
         e_colum_normal.setAttribute("style","background-color:#3d3c4c;");
         e_cn_p.setAttribute("style", "color:#eee;");
     }
-    if("person" == kind) {
+    if("person" == kind){
         e_group_kind.setAttribute("style","");
         e_gk_p.setAttribute("style","");
         e_person_kind.setAttribute("style","background-color:#3d3c4c;");
         e_pk_p.setAttribute("style", "color:#eee;");
     }
-    if("group" == kind) {
+    if("group" == kind){
         e_person_kind.setAttribute("style","");
         e_pk_p.setAttribute("style","");
         e_group_kind.setAttribute("style","background-color:#3d3c4c;");
@@ -98,7 +115,7 @@ var e_target = document.getElementById("target");
 var e_do = document.getElementById("do");
 var e_share = document.getElementById("share");
 
-function submit(kind){
+function submit(kind) {
     var mid = ""; // user mid
     var date = e_date.value.replace(/-/g, "/");
     var group = e_group.value;
@@ -132,7 +149,7 @@ function submit(kind){
             "do": do_text,
             "share": share_text
         }, 
-        function(data){
+        function(data) {
             console.log("activity submit.");
             console.log(data);
     });

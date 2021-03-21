@@ -1,28 +1,21 @@
 <?php
-// 接続する
+// connection
 $host = "localhost";
 $user = "root";
 $pass = "";
 $DB   = "nectgrams";
 $mysqli = new mysqli($host, $user, $pass, $DB);
 
-/* 接続状況をチェック */
+/* connection check */
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }
 
-// クエリ作成
-$select = " SELECT ";
-$colum  = " * ";
-$from   = " FROM ";
-$table  = " base ";
-$query = $select.$colum.$from.$table;
-
+// create query
+$query = "SELECT * FROM base";
 $result = $mysqli->query($query); // クエリ実行
-if(!$result){
-    echo "クエリ実行失敗";
-}
+if(!$result){ echo "クエリ実行失敗";}
 
 $userData = array(); // ユーザーデータ
 
@@ -66,6 +59,8 @@ foreach($userData as $user){ // $user[0]-userName,  $user[1]-password(SHA256),  
         <meta name="google-signin-client_id" content="602046748429-g7tk5ermd7p7vcksmt55eisldsnv51mh.apps.googleusercontent.com">
     </head>
     <body>
+        <?php require "../container/header.html" ?>
+        <!--
         <div class="header">
             <div class="logo">
                 <a href="../">
@@ -79,13 +74,13 @@ foreach($userData as $user){ // $user[0]-userName,  $user[1]-password(SHA256),  
                 <a href="../"><div class="btn faq"><p>FAQ</p></div></a>
                 <a href="../contact/"><div class="btn contact"><p>コンタクト</p></div></a>
             </div>
-            <?php
+            <?php /*
                 if($session){
                     echo "<a href=\"javascript:logout();\"><div class=\"btn login\" style=\"border:solid 2px #333\"><p>ログアウト</p></div></a>";
                 }else{
                     echo "<a href=\"./\"><div class=\"btn login\"  style=\"border:solid 2px #333\"><p>ログイン</p></div></a>";
-                }
-            ?>
+                } */
+            ?>-->
         </div>
         <div class="main">
             <div class="login-form">

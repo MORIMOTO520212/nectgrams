@@ -83,6 +83,7 @@ div.screen{
     border-radius: 10px;
     background-color: #333;
     vertical-align: middle;
+    text-align: center;
     margin: 0 auto;
 }
 div.screen img{
@@ -90,7 +91,7 @@ div.screen img{
     height: 300px;
     object-fit: cover;
     border-radius: 30px;
-    margin: 6px 0 0 2%;
+    margin: 6px 6px 0 6px;
 }
 div.product_sb .scroll{
     position: relative;
