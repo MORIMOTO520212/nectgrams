@@ -1,16 +1,3 @@
-<script>
-    const params = location.href;
-    function getParams(params){
-    const regex = /[?&]([^=#]+)=([^&#]*)/g;
-    const params_obj = {};
-    let match;
-    while(match = regex.exec(params)){
-        params_obj[match[1]] = match[2];
-    }
-    return params_obj;
-    }
-    var _GET = getParams(params); // {"page": "", "login": ""}
-</script>
 <style>
     div.header{
         width: 100%;
@@ -63,14 +50,23 @@
             <p><img id="s_icon" src>Nectgrams</p>
         </a>
     </div>
-    <div class="contents">
+    <div id="contents" class="contents">
         <a id="h_pro" href><div id="btn_products" class="btn product" style><p>作品</p></div></a>
         <a id="h_act" href><div id="btn_activity" class="btn activity" style><p>活動</p></div></a>
         <a id="h_about" href><div id="btn_about" class="btn about" style><p>このサークルについて</p></div></a>
         <a id="h_faq" href><div id="btn_faq" class="btn faq" style><p>FAQ</p></div></a>
         <a id="h_cont" href=><div id="btn_contact" class="btn contact" style><p>コンタクト</p></div></a>
     </div>
-    <div id="btn_login" class="btn login" style><a id="h_login" href><p>ログイン</p></a></div>
+    <script>
+        if(session){
+            document.getElementById("contents").insertAdjacentHTML("afterend", '<a href="javascript:logout();"><div id="btn_login" class="btn login" style><p>ログアウト</p></div></a>');
+        }else{
+            document.getElementById("contents").insertAdjacentHTML("afterend", '<a id="h_login" href><div id="btn_login" class="btn login" style><p>ログイン</p></div></a>');
+        }
+        
+        
+    </script>
+
 </div>
 <script>
     var base_url = location.origin+"/nectgrams";
@@ -94,5 +90,5 @@
     document.getElementById("h_about").setAttribute("href", base_url+"/about");
     document.getElementById("h_faq").setAttribute("href", base_url+"/faq");
     document.getElementById("h_cont").setAttribute("href", base_url+"/contact");
-    document.getElementById("h_login").setAttribute("href", base_url+"/login");
+    if(!session) document.getElementById("h_login").setAttribute("href", base_url+"/login");
 </script>

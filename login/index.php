@@ -1,47 +1,15 @@
 <?php
-// connection
-$host = "localhost";
-$user = "root";
-$pass = "";
-$DB   = "nectgrams";
-$mysqli = new mysqli($host, $user, $pass, $DB);
+require "../container/connect_mysql_users.php";
+require "../container/session_check.php";
 
-/* connection check */
-if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
-    exit();
-}
+// vew database
+$userData = array();
+while($row = $result->fetch_row()) $userData[] = $row;
 
-// create query
-$query = "SELECT * FROM base";
-$result = $mysqli->query($query); // クエリ実行
-if(!$result){ echo "クエリ実行失敗";}
+$session = sessionCheck($userData); // true or false.
 
-$userData = array(); // ユーザーデータ
 
-// データベース表示
-while($row = $result->fetch_row()){
-    $userData[] = $row;
-}
-
-// 終了
 $mysqli->close();
-
-
-// ユーザーセッション
-$session = false;
-$userSession = ""; // ログインしてない場合  
-foreach($_COOKIE as $key => $value){ // cookie確認と取得
-    if("session" == $key){
-          $userSession = $_COOKIE["session"];
-    }
-}
-foreach($userData as $user){ // $user[0]-userName,  $user[1]-password(SHA256),  $user[2]-userId
-    $sql_userId = $user[2];
-    if($userSession == $sql_userId){
-        $session = true;
-    }
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -59,7 +27,8 @@ foreach($userData as $user){ // $user[0]-userName,  $user[1]-password(SHA256),  
         <meta name="google-signin-client_id" content="602046748429-g7tk5ermd7p7vcksmt55eisldsnv51mh.apps.googleusercontent.com">
     </head>
     <body>
-        <?php require "../container/header.html" ?>
+        <script>var session = <?php echo $session ?>;</script>
+        <?php require "../container/header.html"; ?>
         <!--
         <div class="header">
             <div class="logo">

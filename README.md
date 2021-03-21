@@ -56,21 +56,21 @@ HTML5/CSS, JS, PHP
 googleアカウントでのログインとパスワードでのログインの実装。  
 
 ユーザー管理テーブル  
-CREATE TABLE users(id VARCHAR(50),password VARCHAR(64),gsh VARCHAR(64),mid VARCHAR(12),name VARCHAR(100),'group' VARCHAR(100),'count' INT,'last' VARCHAR(10));  
+CREATE TABLE users(id VARCHAR(50), password VARCHAR(64), gsh VARCHAR(64), mid VARCHAR(12) PRIMARY KEY, name VARCHAR(100), group VARCHAR(100), count INT, last VARCHAR(10));  
 
 [users table]
 カラム     説明                エンコード          型
 id        ユーザーID           半角英数+記号       varchar(50)  
 password  パスワード           SHA256 HEX         varchar(64)  
 gsh       Google SignIn Hash  SHA256 HEX         varchar(64)  
-mid       ユーザー識別ID       半角英数(12文字)    varchar(12)  
+mid       ユーザー識別ID       半角英数(12文字)    varchar(12)  PRIMARY KEY
 name      ユーザー名           base64             varchar(100)  
 group     所属班               base64             varchar(100)  
 count     アクセスカウンタ      int                int  
 last      最終アクセス日時      yyyy/mm/dd         varchar(10)  
 
 挿入形式：  
-INSERT INTO users VALUES('ID', 'pass-sha256', 'google-signin-sha256', 'mid, 'name-base64', 'group-base64', 0, '2021/03/18');  
+INSERT INTO users VALUES('id', 'pass-sha256', 'google-signin-sha256', 'mid, 'name-base64', 'group-base64', 0, '2021/03/18');  
 
 
 

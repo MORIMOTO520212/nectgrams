@@ -7,30 +7,7 @@
 //    SELECT * FROM テーブル名 WHERE カラム名="文字列(完全一致)";
 //
 // 接続する
-$host = "localhost";
-$user = "root";
-$pass = "";
-$DB   = "nectgrams";
-$mysqli = new mysqli($host, $user, $pass, $DB);
-
-/* 接続状況をチェック */
-if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
-    exit();
-}
-
-
-// クエリ作成
-$select = " SELECT ";
-$colum  = " * ";
-$from   = " FROM ";
-$table  = " base ";
-$query = $select.$colum.$from.$table;
-
-$result = $mysqli->query($query); // クエリ実行
-if(!$result){
-    echo "クエリ実行失敗";
-}
+require "../../container/connect_mysql_users.php";
 
 $userData = array(); // ユーザーデータ
 
@@ -42,14 +19,22 @@ while($row = $result->fetch_row()){
 // 終了
 $mysqli->close();
 
-$check_id = $_POST["id"];
-$check_pass = $_POST["password"];
-foreach($userData as $user){ // $user[0]-userName,  $user[1]-password(SHA256),  $user[2]-userId
-    $sql_userName = $user[0];
-    $sql_pass     = $user[1];
-    $sql_userId   = $user[2];
-    if($check_id == $sql_userName && hash("sha256", $check_pass) == $sql_pass){
-        echo $sql_userId;
+if("form" == $_POST["type"]){
+    $form_id = $_POST["id"];
+    $pass_hash = $_POST["pass_hash"];
+    foreach($userData as $user){
+        $sql_id        = $user[0];
+        $sql_pass_hash = $user[1];
+        $sql_mid       = $user[3];
+        if($form_id == $sql_id && $pass_hash == $sql_pass_hash) echo $sql_mid;
+    }
+}
+if("g_signin" == $_POST["type"]){
+    $form_gsh = $_POST["g_signin_hash"];
+    foreach($userData as $user){
+        $sql_gsh = $user[2];
+        $sql_mid  = $user[3];
+        if($sql_gsh == $form_gsh) echo $sql_mid;
     }
 }
 ?>
