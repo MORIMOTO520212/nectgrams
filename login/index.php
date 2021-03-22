@@ -29,27 +29,6 @@ $mysqli->close();
     <body>
         <script>var session = <?php echo $session ?>;</script>
         <?php require "../container/header.html"; ?>
-        <!--
-        <div class="header">
-            <div class="logo">
-                <a href="../">
-                    <p><img src="assets/nectgrams_icon.png">Nectgrams</p>
-                </a>
-            </div>
-            <div class="contents">
-                <a href="../products/"><div class="btn product"><p>作品</p></div></a>
-                <a href="../activity/"><div class="btn activity"><p>活動</p></div></a>
-                <a href="../"><div class="btn about"><p>このサークルについて</p></div></a>
-                <a href="../"><div class="btn faq"><p>FAQ</p></div></a>
-                <a href="../contact/"><div class="btn contact"><p>コンタクト</p></div></a>
-            </div>
-            <?php /*
-                if($session){
-                    echo "<a href=\"javascript:logout();\"><div class=\"btn login\" style=\"border:solid 2px #333\"><p>ログアウト</p></div></a>";
-                }else{
-                    echo "<a href=\"./\"><div class=\"btn login\"  style=\"border:solid 2px #333\"><p>ログイン</p></div></a>";
-                } */
-            ?>-->
         </div>
         <div class="main">
             <div class="login-form">
