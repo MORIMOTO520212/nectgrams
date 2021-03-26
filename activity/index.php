@@ -1,58 +1,21 @@
 <?php
-// 接続する
-$host = "localhost";
-$user = "root";
-$pass = "";
-$DB   = "nectgrams";
-$mysqli = new mysqli($host, $user, $pass, $DB);
-
-/* 接続状況をチェック */
-if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
-    exit();
-}
-
-// クエリ作成
-$select = " SELECT ";
-$colum  = " * ";
-$from   = " FROM ";
-$table  = " base ";
-$query = $select.$colum.$from.$table;
-
-$result = $mysqli->query($query); // クエリ実行
-if(!$result){
-    echo "クエリ実行失敗";
-}
+require "../container/connect_mysql_users.php";
+require "../container/login_session_check.php";
 
 $userData = array(); // ユーザーデータ
 
 // データベース表示
-while($row = $result->fetch_row()){
-    $userData[] = $row;
-}
+while($row = $result->fetch_row()) $userData[] = $row;
 
-// 終了
-$mysqli->close();
+$session = sessionCheck($userData); // return true or false.
 
-
-// ユーザーセッション
-$session = false;
-$userSession = ""; // ログインしてない場合  
-foreach($_COOKIE as $key => $value){ // cookie確認と取得
-    if("session" == $key){
-          $userSession = $_COOKIE["session"];
-    }
-}
-foreach($userData as $user){ // $user[0]-userName,  $user[1]-password(SHA256),  $user[2]-userId
-    $sql_userId = $user[2];
-    if($userSession == $sql_userId){
-        $session = true;
-    }
-}
 // get products json data
 $activities_data = file_get_contents("../database/activities.json");
 $activities_data = mb_convert_encoding($activities_data, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
 $activities = json_decode($activities_data, true);
+
+// 終了
+$mysqli->close();
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,8 +27,10 @@ $activities = json_decode($activities_data, true);
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
+        <?php require "../container/open_graph_protocol.html" ?>
     </head>
     <body>
+        <script>var session = <?php echo $session ?>;</script>
         <?php require "../container/header.html" ?>
         <div class="main">
             <div class="control">
@@ -78,38 +43,7 @@ $activities = json_decode($activities_data, true);
                     <div id="colum_reverse" class="pgc-btn right-btn" style><a href="#" onclick="activities_view(0,'reverse');return false;"></a><p id="cr_p" style>古い順</p></div>
                 </div>
             </div>
-            <div id="activities" class="activities">
-                <div class="activity-box">
-                    <div class="box-main">
-                        <div class="contributor inp">
-                            <input id="date" type="date" value="2021-03-16">
-                            <input id="group" type="text" placeholder="所属班">
-                            <input id="contributor" type="text" placeholder="入力者">
-                            <div class="create-btn"><a href="javascript:submit();">投稿</a></div>
-                        </div>
-                        <div class="main">
-                            <div class="record">
-                                <li class="title">目標</li>
-                                <div class="contents">
-                                    <textarea id="target" placeholder="今回の活動目標を記入してください。"></textarea>
-                                </div>
-                            </div>
-                            <div class="record">
-                                <li class="title">できたこと</li>
-                                <div class="contents">
-                                    <textarea id="do" placeholder="活動した内容について記入してください。"></textarea>
-                                </div>
-                            </div>
-                            <div class="record">
-                                <li class="title">共有したいこと</li>
-                                <div class="contents">
-                                <textarea id="share" placeholder="全体や班の内で共有したいことや疑問点があればそれについて記入してください。"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div id="activities" class="activities"></div>
         </div>
         <div class="footer">
             <div class="f-main">

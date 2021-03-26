@@ -63,8 +63,6 @@
         }else{
             document.getElementById("contents").insertAdjacentHTML("afterend", '<a id="h_login" href><div id="btn_login" class="btn login" style><p>ログイン</p></div></a>');
         }
-        
-        
     </script>
 
 </div>
@@ -87,8 +85,8 @@
     document.getElementById("s_icon").setAttribute("src", base_url+"/assets/nectgrams_icon.png");
     document.getElementById("h_pro").setAttribute("href", base_url+"/products");
     document.getElementById("h_act").setAttribute("href", base_url+"/activity");
-    document.getElementById("h_about").setAttribute("href", base_url+"/about");
-    document.getElementById("h_faq").setAttribute("href", base_url+"/faq");
+    document.getElementById("h_about").setAttribute("href", base_url);
+    document.getElementById("h_faq").setAttribute("href", base_url);
     document.getElementById("h_cont").setAttribute("href", base_url+"/contact");
     if(!session) document.getElementById("h_login").setAttribute("href", base_url+"/login");
 </script>

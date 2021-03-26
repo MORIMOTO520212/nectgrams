@@ -4,14 +4,13 @@
 ### やること
 [ホームページ]  
 - FAQを増やす。
+班をかけ持つことはできますか？
 
 [ログインページ]  
 - Google Sign-InとmySQLを連結させる。
 
 [活動ページ]  
-- base.js - 日付での並び替え
-- Googleスプレッドシートと二重でデータ管理
-- 個人活動と班活動で切り替えるスイッチ。
+- Googleスプレッドシートと二重でデータ管理  
 - <班活動>記録に表示する情報は活動日、入力者、所属班、種別(班の新規作成・班の活動に関する更新/活動の経過報告)、活動内容、班での製作物、班長の名前、班員の名前、製作物の完成度、班全体の活動状況
 - ログインユーザーのみ進捗グラフを表示。
 
@@ -21,11 +20,30 @@ web_products - 終わり次第
 web_activity - 終わり次第  
 web_login - 森本  
 
+### ドメインとDNSの設定
+ドメイン取得：お名前ドットコム
+サイトURL：https://www.nectgrams.com  
+レジストラ：Google Cloud Platform Cloud DNS
+NSレコード：
+ns-cloud-d1.googledomains.com
+ns-cloud-d2.googledomains.com
+ns-cloud-d3.googledomains.com
+ns-cloud-d4.googledomains.com
+Aレコード：
+www.nectgrams.com ttl300s ip34.105.127.227
+
+### SSL
+Let's Encrypt使用  
+
+### サーバーへのログイン方法
+ホストIP：34.105.127.227
+ユーザー名：nectgrams
+パスワード：agario520212
+秘密鍵：nectgrams-ssh-key.ppk
+
 ### ホームページ
 作品画像サイズ：5x3  
-
-FAQ  
-班をかけ持つことはできますか。  
+Open Graph Protocol 1200x630px 5MB  
 
 ### 作品ページ
 作品画像サイズ：5x3  

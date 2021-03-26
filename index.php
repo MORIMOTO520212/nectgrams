@@ -1,4 +1,13 @@
 <?php
+require "container/connect_mysql_users.php";
+require "container/login_session_check.php";
+
+// vew database
+$userData = array();
+while($row = $result->fetch_row()) $userData[] = $row;
+
+$session = sessionCheck($userData); // return true or false.
+
 // get products json data
 $products_data = file_get_contents("database/products.json");
 $products_data = json_encode($products_data);
@@ -14,11 +23,11 @@ $products_data = json_encode($products_data);
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
+        <?php require "container/open_graph_protocol.html" ?>
     </head>
     <body>
-        <script>
-            var products = JSON.parse(<?php echo $products_data ?>);
-        </script>
+        <script>var products = JSON.parse(<?php echo $products_data ?>);</script>
+        <script>var session = <?php echo $session ?>;</script>
         <?php require "container/header.html" ?>
         <div class="main">
             <div class="product_sb">
@@ -132,7 +141,7 @@ $products_data = json_encode($products_data);
                         <div class="question">
                             <div class="a-icon"><p>A</p></div>
                             <div class="q-msg">
-                                <p></p>
+                                <p>班のかけ持ちに制限はありません。</p>
                             </div>
                         </div>
                     </div>

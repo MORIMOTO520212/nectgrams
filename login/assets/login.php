@@ -16,19 +16,18 @@ while($row = $result->fetch_row()){
     $userData[] = $row;
 }
 
-// 終了
-$mysqli->close();
-
+/* ID PASS LOGIN */
 if("form" == $_POST["type"]){
     $form_id = $_POST["id"];
     $pass_hash = $_POST["pass_hash"];
-    foreach($userData as $user){
+    foreach($userData as $user){ // id - $user[0], pass_hash - $user[1], gsh - $user[2], mid - $user[3]
         $sql_id        = $user[0];
         $sql_pass_hash = $user[1];
         $sql_mid       = $user[3];
         if($form_id == $sql_id && $pass_hash == $sql_pass_hash) echo $sql_mid;
     }
 }
+/* GOOGLE SIGNIN LOGIN */
 if("g_signin" == $_POST["type"]){
     $form_gsh = $_POST["g_signin_hash"];
     foreach($userData as $user){
@@ -37,4 +36,7 @@ if("g_signin" == $_POST["type"]){
         if($sql_gsh == $form_gsh) echo $sql_mid;
     }
 }
+
+// 終了
+$mysqli->close();
 ?>

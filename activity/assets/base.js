@@ -57,17 +57,27 @@ function activities_view(kind, colum) { // kind - person, group   colum - normal
     if(0 == colum){colum = _colum}
     else{_colum = colum}
     var source = "";
+    if(session){
+        source += '\
+        <div class="activity-box"><div class="box-main"><div class="contributor inp">\
+        <input id="date" type="date" value="2021-03-16"><input id="group" type="text" placeholder="所属班"><input id="contributor" type="text" placeholder="入力者">\
+        <div class="create-btn"><a href="javascript:submit();">投稿</a></div></div><div class="main">\
+        <div class="record"><li class="title">目標</li><div class="contents"><textarea id="target" placeholder="今回の活動目標を記入してください。"></textarea>\
+        </div></div><div class="record"><li class="title">できたこと</li><div class="contents"><textarea id="do" placeholder="活動した内容について記入してください。"></textarea>\
+        </div></div><div class="record"><li class="title">共有したいこと</li><div class="contents">\
+        <textarea id="share" placeholder="全体や班の内で共有したいことや疑問点があればそれについて記入してください。"></textarea></div></div></div></div></div>';
+    }
     if("reverse" == colum){
         for(let i=0; i<activities.length; i++){
             if(kind != activities[i]["kind"]){continue}
-            source += "\
-            <div class=\"activity-box\"><div class=\"box-main\">\
-            <div class=\"contributor\"><p>"+activities[i]["date"]+" "+activities[i]["group"]+" "+activities[i]["contributor"]+"</p>\
-            </div><div class=\"main\"><div class=\"record\"><li id=\"target\" class=\"title\">目標</li>\
-            <div class=\"contents\"><p>"+activities[i]["target"]+"</p></div></div><div class=\"record\"><li id=\"do\" class=\"title\">できたこと</li>\
-            <div class=\"contents\"><p>"+activities[i]["do"]+"</p></div></div>\
-            <div class=\"record\"><li id=\"share\" class=\"title\">共有したいこと</li><div class=\"contents\"><p>"+activities[i]["share"]+"</p></div>\
-            </div></div></div></div>";
+            source += '\
+            <div class="activity-box"><div class="box-main">\
+            <div class="contributor"><p>'+activities[i]["date"]+' '+activities[i]["group"]+' '+activities[i]["contributor"]+'</p>\
+            </div><div class="main"><div class="record"><li id="target" class="title">目標</li>\
+            <div class="contents"><p>'+activities[i]["target"]+'</p></div></div><div class="record"><li id="do" class="title">できたこと</li>\
+            <div class="contents"><p>'+activities[i]["do"]+'</p></div></div>\
+            <div class="record"><li id="share" class="title">共有したいこと</li><div class="contents"><p>'+activities[i]["share"]+'</p></div>\
+            </div></div></div></div>';
         }
         e_colum_normal.setAttribute("style","");
         e_cn_p.setAttribute("style","");
@@ -77,14 +87,14 @@ function activities_view(kind, colum) { // kind - person, group   colum - normal
     if("normal" == colum){
         for(let i=activities.length-1; 0<=i; i--){
             if(kind != activities[i]["kind"]){continue}
-            source += "\
-            <div class=\"activity-box\"><div class=\"box-main\">\
-            <div class=\"contributor\"><p>"+activities[i]["date"]+" "+activities[i]["group"]+" "+activities[i]["contributor"]+"</p>\
-            </div><div class=\"main\"><div class=\"record\"><li id=\"target\" class=\"title\">目標</li>\
-            <div class=\"contents\"><p>"+activities[i]["target"]+"</p></div></div><div class=\"record\"><li id=\"do\" class=\"title\">できたこと</li>\
-            <div class=\"contents\"><p>"+activities[i]["do"]+"</p></div></div>\
-            <div class=\"record\"><li id=\"share\" class=\"title\">共有したいこと</li><div class=\"contents\"><p>"+activities[i]["share"]+"</p></div>\
-            </div></div></div></div>";
+            source += '\
+            <div class="activity-box"><div class="box-main">\
+            <div class="contributor"><p>'+activities[i]["date"]+' '+activities[i]["group"]+' '+activities[i]["contributor"]+'</p>\
+            </div><div class="main"><div class="record"><li id="target" class="title">目標</li>\
+            <div class="contents"><p>'+activities[i]["target"]+'</p></div></div><div class="record"><li id="do" class="title">できたこと</li>\
+            <div class="contents"><p>'+activities[i]["do"]+'</p></div></div>\
+            <div class="record"><li id="share" class="title">共有したいこと</li><div class="contents"><p>'+activities[i]["share"]+'</p></div>\
+            </div></div></div></div>';
         }
         e_colum_reverse.setAttribute("style","");
         e_cr_p.setAttribute("style","");

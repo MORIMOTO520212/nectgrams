@@ -1,13 +1,12 @@
 <?php
 require "../container/connect_mysql_users.php";
-require "../container/session_check.php";
+require "../container/login_session_check.php";
 
 // vew database
 $userData = array();
 while($row = $result->fetch_row()) $userData[] = $row;
 
-$session = sessionCheck($userData); // true or false.
-
+$session = sessionCheck($userData);
 
 $mysqli->close();
 ?>
@@ -21,10 +20,12 @@ $mysqli->close();
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="assets/sha256.js"></script>
+        <script src="../container/getCookie.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
         <!-- Google Sign In -->
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <meta name="google-signin-client_id" content="602046748429-g7tk5ermd7p7vcksmt55eisldsnv51mh.apps.googleusercontent.com">
+        <?php require "../container/open_graph_protocol.html" ?>
     </head>
     <body>
         <script>var session = <?php echo $session ?>;</script>

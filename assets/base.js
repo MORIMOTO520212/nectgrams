@@ -37,3 +37,9 @@ function scroll_view(direction){
     document.getElementById("btn_"+si).setAttribute("style", "background-color:#bebebe;");
 }
 scroll_view("next"); // initial view
+
+/* logout */
+function logout(){
+    document.cookie = "session=;path=/";
+    setTimeout(function(){location.reload()}, 1000);
+}

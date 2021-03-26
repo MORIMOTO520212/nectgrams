@@ -10,9 +10,7 @@ function sessionCheck($userData) {
     }
     foreach($userData as $user){
         $sql_mid = $user[3];
-        if($userSession == $sql_mid){
-            $session = 1;
-        }
+        if($userSession == $sql_mid) $session = 1;
     }
     return $session;
 }

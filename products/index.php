@@ -1,58 +1,20 @@
 <?php
-// 接続する
-$host = "localhost";
-$user = "root";
-$pass = "";
-$DB   = "nectgrams";
-$mysqli = new mysqli($host, $user, $pass, $DB);
-
-/* 接続状況をチェック */
-if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
-    exit();
-}
-
-// クエリ作成
-$select = " SELECT ";
-$colum  = " * ";
-$from   = " FROM ";
-$table  = " base ";
-$query = $select.$colum.$from.$table;
-
-$result = $mysqli->query($query); // クエリ実行
-if(!$result){
-    echo "クエリ実行失敗";
-}
-
-$userData = array(); // ユーザーデータ
+require "../container/connect_mysql_users.php";
+require "../container/login_session_check.php";
 
 // データベース表示
-while($row = $result->fetch_row()){
-    $userData[] = $row;
-}
+$userData = array(); // ユーザーデータ
+while($row = $result->fetch_row()) $userData[] = $row;
 
-// 終了
-$mysqli->close();
+$session = sessionCheck($userData); // return true or false.
 
-
-// ユーザーセッション
-$session = false;
-$userSession = ""; // ログインしてない場合  
-foreach($_COOKIE as $key => $value){ // cookie確認と取得
-    if("session" == $key){
-          $userSession = $_COOKIE["session"];
-    }
-}
-foreach($userData as $user){ // $user[0]-userName,  $user[1]-password(SHA256),  $user[2]-userId
-    $sql_userId = $user[2];
-    if($userSession == $sql_userId){
-        $session = true;
-    }
-}
 // get products json data
 $products_data = file_get_contents("../database/products.json");
 $products_data = mb_convert_encoding($products_data, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
 $products = json_decode($products_data, true);
+
+// 終了
+$mysqli->close();
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,11 +26,10 @@ $products = json_decode($products_data, true);
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
-        <script>
-
-        </script>
+        <?php require "../container/open_graph_protocol.html" ?>
     </head>
     <body>
+    <script>var session = <?php echo $session ?>;</script>
         <?php require "../container/header.html" ?>
         <div class="main">
             <div id="products">

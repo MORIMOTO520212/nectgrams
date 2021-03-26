@@ -1,3 +1,14 @@
+<?php
+require "../container/connect_mysql_users.php";
+require "../container/login_session_check.php";
+
+$userData = array(); // ユーザーデータ
+
+// データベース表示
+while($row = $result->fetch_row()) $userData[] = $row;
+
+$session = sessionCheck($userData); // return true or false.
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,8 +20,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
     </head>
     <body>
+        <script>var session = <?php echo $session ?>;</script>
         <?php require "../container/header.html" ?>
-
         <div class="main">
             <div class="msg">
                 <p>意見、改善点、トラブル報告…</p>
