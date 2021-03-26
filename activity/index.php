@@ -35,8 +35,8 @@ $mysqli->close();
         <div class="main">
             <div class="control">
                 <div class="kc">
-                    <div id="person_kind" class="pgc-btn left-btn" style><a href="#" onclick="activities_view('person',0);return false;"></a><p id="pk_p" style>個人記録</p></div>
-                    <div id="group_kind" class="pgc-btn right-btn" style><a href="#" onclick="activities_view('group',0);return false;"></a><p id="gk_p" style>班記録</p></div>
+                    <div id="person_kind" class="pgc-btn left-btn" style><a id="pk_a" href="#" onclick="activities_view('person',0);return false;"></a><p id="pk_p" style>個人記録</p></div>
+                    <div id="group_kind" class="pgc-btn right-btn" style><a id="gk_a" href="#" onclick="activities_view('group',0);return false;"></a><p id="gk_p" style>班記録</p></div>
                 </div>
                 <div class="kc">
                     <div id="colum_normal" class="pgc-btn left-btn" style><a href="#" onclick="activities_view(0,'normal');return false;"><p id="cn_p" style>新しい順</p></a></div>

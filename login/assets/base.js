@@ -60,10 +60,12 @@ function onSignIn(googleUser){
             data: {"mid": getCookie("session"), "g_signin_hash": hash},
             success: function(res){
                 if(res){
-                    alert("Googleアカウントを正常に紐付けました。")
+                    alert("Googleアカウントを正常に紐づけました。");
+                }else if("existed"==res){
+                   alert("既にGoogleアカウントは紐づいています。");
                 }else{
-                    alert("Googleアカウントの紐づけに失敗しました。\nログインできない場合は関係者に問い合わせてください。");
-                }  
+                    alert("Googleアカウントの紐づけに失敗しました。\nコンタクトページから関係者に問い合わせてください。");
+                }
             },
             error: function(){
                 alert("通信エラー.");

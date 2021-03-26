@@ -36,7 +36,12 @@ function getData_activities(jsonData) {
 $.post("../getData.php", {"dataType": "activity"}, function(getData){
     var jsonData = JSON.parse(getData);
     getData_activities(jsonData);
-    activities_view("person", "normal"); // initial
+    if(session){
+        activities_view("person", "normal"); // initial
+    }else{
+        activities_view("group", "normal"); // initial
+        document.getElementById("pk_a").setAttribute("onclick", "alert('個人記録はサークルメンバーのみ閲覧することが可能です。');return false;");
+    }
 });
 
 var e_activities = document.getElementById("activities");
