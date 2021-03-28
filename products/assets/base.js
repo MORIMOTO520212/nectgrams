@@ -11,6 +11,8 @@ function logout(){
 var element_setimg = document.getElementById("setimg");
 var element_header = document.getElementById("header");
 var element_message = document.getElementById("message");
+var e_ta_markdown = document.getElementById("input_markdown");
+var sample_txt = "## Markdown 記述シート\n作品の詳細な内容を記述してください。\n# 見出し１\n## 見出し２\n### 見出し３\n- リスト１\n- リスト２\n- リスト３\n\n**強調**\n\n[リンク](https://www.nectgrams.com)";
 var up_filename = "";
 
 
@@ -78,13 +80,61 @@ function submit(){
         alert("メッセージが記入されていません。");
         return 0;
     }
-    let title = element_header.value;
-    let message = element_message.value;
-    let photo = "database/images/" + up_filename;
-    $.post("assets/submit.php", {"title": title, "message": message, "photo": photo}, function(data){
-        console.log("product submit.");
-        console.log(data);
+    if(sample_txt==e_ta_markdown.value){
+        alert("内容が書かれていません。");
+        return 0;
+    }
+    var title = element_header.value;
+    var message = element_message.value;
+    var photo = "database/images/" + up_filename;
+    var document = e_ta_markdown.value;
+
+    $.post("assets/submit.php", {
+        "title": title,
+        "message": message,
+        "photo": photo,
+        "document": document
+        },
+        function(data){
+            console.log("product submit.");
+            console.log(data);
     });
     function reload(){ location.reload(); }
     setTimeout(reload, 1000);
+}
+
+/* markdown */
+var e_preview = document.getElementById("preview");
+var e_main = document.getElementById("main");
+var e_document = document.getElementById("document");
+var e_document_title = document.getElementById("document_title");
+
+$("textarea").on("keyup", function() {
+    var data = e_ta_markdown.value;
+    e_preview.innerHTML = markdown(data);
+});
+
+/* sample */
+e_ta_markdown.value = sample_txt;
+e_preview.innerHTML = markdown(sample_txt);
+
+function documentWrite(){
+    e_main.setAttribute("style","display:none;");
+    e_document.setAttribute("style","");
+    console.log("open the Markdown window.");
+    var title = element_header.value;
+    e_document_title.innerText = title;
+}
+
+function document_submit(){
+    e_main.setAttribute("style","");
+    e_document.setAttribute("style","display:none;");
+    console.log("product document submit.");
+
+}
+
+function markdownCloseWindow(){
+    e_main.setAttribute("style","");
+    e_document.setAttribute("style","display:none;");
+    console.log("close the Markdown window.");
 }

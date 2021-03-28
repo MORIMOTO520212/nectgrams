@@ -7,7 +7,6 @@
 班をかけ持つことはできますか？
 
 [ログインページ]  
-- Google Sign-InとmySQLを連結させる。
 
 [活動ページ]  
 - Googleスプレッドシートと二重でデータ管理  
@@ -74,7 +73,7 @@ HTML5/CSS, JS, PHP
 googleアカウントでのログインとパスワードでのログインの実装。  
 
 ユーザー管理テーブル  
-CREATE TABLE users(id VARCHAR(50), password VARCHAR(64), gsh VARCHAR(64), mid VARCHAR(12) PRIMARY KEY, name VARCHAR(100), group VARCHAR(100), count INT, last VARCHAR(10));  
+CREATE TABLE users(id VARCHAR(50), password VARCHAR(64), gsh VARCHAR(64), mid VARCHAR(12) PRIMARY KEY, name VARCHAR(100), `group` VARCHAR(100), count INT, last VARCHAR(10));  
 
 [users table]
 カラム     説明                エンコード          型
@@ -90,7 +89,9 @@ last      最終アクセス日時      yyyy/mm/dd         varchar(10)
 挿入形式：  
 INSERT INTO users VALUES('id', 'pass-sha256', 'google-signin-sha256', 'mid, 'name-base64', 'group-base64', 0, '2021/03/18');  
 
-
+GCP server MySQL.
+~$ mysql -u nectgrams -p
+~$ agario520212
 
 ### コンタクトページ
 サークルの加入についてはサークル管理者に連絡してください。

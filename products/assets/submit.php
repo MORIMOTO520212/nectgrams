@@ -2,18 +2,18 @@
 /*
     get products json data
       created:2021.02.27
-
-    products.jsonに情報を記録する
 */
 $title = $_POST["title"];
 $message = $_POST["message"];
 $photo = $_POST["photo"];
 $date = getdate()["year"]."/".getdate()["mon"]."/".getdate()["mday"];
+$document = $_POST["document"];
 $product = array(
     "title" => $title,
     "message" => $message,
     "photo" => $photo,
-    "date" => $date
+    "date" => $date,
+    "document" => $document
 );
 
 $products_data = file_get_contents("../../database/products.json");

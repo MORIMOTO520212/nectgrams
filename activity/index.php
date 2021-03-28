@@ -25,6 +25,7 @@ $mysqli->close();
         <link rel="stylesheet" type="text/css" href="assets/style.css">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="../container/getCookie.js"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
         <?php require "../container/open_graph_protocol.html" ?>

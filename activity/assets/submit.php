@@ -2,23 +2,27 @@
 /*
     get activity json data
       created:2021.03.16
-
-    activity.jsonに情報を記録する
 */
+$kind = $_POST["kind"];
+$mid = $_POST["mid"];
 $date = $_POST["date"];
 $group = $_POST["group"];
 $contributor = $_POST["contributor"];
-$target_text = $_POST["target"];
-$do_text = $_POST["do"];
-$share_text = $_POST["share"];
+$target = $_POST["target"];
+$do = $_POST["do"];
+$complete = $_POST["complete"];
+$share = $_POST["share"];
 
 $activity = array(
+    "kind" => $kind,
+    "mid" => $mid,
     "date" => $date,
     "group" => $group,
     "contributor" => $contributor,
-    "target_text" => $target_text,
-    "do_text" => $do_text,
-    "share_text" => $share_text
+    "target" => $target,
+    "do" => $do,
+    "complete" => (int)$complete,
+    "share" => $share
 );
 
 $activities_data = file_get_contents("../../database/activities.json");

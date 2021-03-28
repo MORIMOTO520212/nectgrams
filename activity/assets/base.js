@@ -64,25 +64,62 @@ function activities_view(kind, colum) { // kind - person, group   colum - normal
     var source = "";
     if(session){
         source += '\
-        <div class="activity-box"><div class="box-main"><div class="contributor inp">\
-        <input id="date" type="date" value="2021-03-16"><input id="group" type="text" placeholder="所属班"><input id="contributor" type="text" placeholder="入力者">\
-        <div class="create-btn"><a href="javascript:submit();">投稿</a></div></div><div class="main">\
-        <div class="record"><li class="title">目標</li><div class="contents"><textarea id="target" placeholder="今回の活動目標を記入してください。"></textarea>\
-        </div></div><div class="record"><li class="title">できたこと</li><div class="contents"><textarea id="do" placeholder="活動した内容について記入してください。"></textarea>\
-        </div></div><div class="record"><li class="title">共有したいこと</li><div class="contents">\
-        <textarea id="share" placeholder="全体や班の内で共有したいことや疑問点があればそれについて記入してください。"></textarea></div></div></div></div></div>';
+        <div class="activity-box">\
+            <div class="box-main">\
+                <div class="contributor inp">\
+                    <input id="date" type="date" value="2021-03-16">\
+                    <input id="group" type="text" placeholder="所属班">\
+                    <input id="contributor" type="text" placeholder="入力者">\
+                    <div class="create-btn"><a href="javascript:submit(\'person\');">投稿</a></div>\
+                </div>\
+                <div class="main">\
+                    <div class="record">\
+                        <li class="title">目標</li>\
+                        <div class="contents">\
+                            <textarea id="target" placeholder="今回の活動目標を記入してください。"></textarea>\
+                        </div>\
+                    </div>\
+                    <div class="record">\
+                        <li class="title">できたこと　　達成度：<input id="complete" type="text" placeholder="50"> %</li>\
+                        <div class="contents">\
+                            <textarea id="do" placeholder="活動した内容について記入してください。"></textarea>\
+                        </div>\
+                    </div>\
+                    <div class="record">\
+                        <li class="title">共有したいこと</li>\
+                        <div class="contents">\
+                            <textarea id="share" placeholder="全体や班の内で共有したいことや疑問点があればそれについて記入してください。"></textarea>\
+                        </div>\
+                    </div>\
+                </div>\
+            </div>\
+        </div>';
     }
     if("reverse" == colum){
         for(let i=0; i<activities.length; i++){
             if(kind != activities[i]["kind"]){continue}
             source += '\
-            <div class="activity-box"><div class="box-main">\
-            <div class="contributor"><p>'+activities[i]["date"]+' '+activities[i]["group"]+' '+activities[i]["contributor"]+'</p>\
-            </div><div class="main"><div class="record"><li id="target" class="title">目標</li>\
-            <div class="contents"><p>'+activities[i]["target"]+'</p></div></div><div class="record"><li id="do" class="title">できたこと</li>\
-            <div class="contents"><p>'+activities[i]["do"]+'</p></div></div>\
-            <div class="record"><li id="share" class="title">共有したいこと</li><div class="contents"><p>'+activities[i]["share"]+'</p></div>\
-            </div></div></div></div>';
+            <div class="activity-box">\
+                <div class="box-main">\
+                    <div class="contributor">\
+                        <p>'+activities[i]["date"]+' '+activities[i]["group"]+' '+activities[i]["contributor"]+'</p>\
+                    </div>\
+                    <div class="main">\
+                        <div class="record">\
+                            <li id="target" class="title">目標</li>\
+                            <div class="contents"><p>'+activities[i]["target"]+'</p></div>\
+                        </div>\
+                        <div class="record">\
+                            <li id="do" class="title">できたこと　達成度：'+activities[i]["complete"]+' %</li>\
+                            <div class="contents"><p>'+activities[i]["do"]+'</p></div>\
+                        </div>\
+                        <div class="record">\
+                            <li id="share" class="title">共有したいこと</li>\
+                            <div class="contents"><p>'+activities[i]["share"]+'</p></div>\
+                        </div>\
+                    </div>\
+                </div>\
+            </div>';
         }
         e_colum_normal.setAttribute("style","");
         e_cn_p.setAttribute("style","");
@@ -93,13 +130,27 @@ function activities_view(kind, colum) { // kind - person, group   colum - normal
         for(let i=activities.length-1; 0<=i; i--){
             if(kind != activities[i]["kind"]){continue}
             source += '\
-            <div class="activity-box"><div class="box-main">\
-            <div class="contributor"><p>'+activities[i]["date"]+' '+activities[i]["group"]+' '+activities[i]["contributor"]+'</p>\
-            </div><div class="main"><div class="record"><li id="target" class="title">目標</li>\
-            <div class="contents"><p>'+activities[i]["target"]+'</p></div></div><div class="record"><li id="do" class="title">できたこと</li>\
-            <div class="contents"><p>'+activities[i]["do"]+'</p></div></div>\
-            <div class="record"><li id="share" class="title">共有したいこと</li><div class="contents"><p>'+activities[i]["share"]+'</p></div>\
-            </div></div></div></div>';
+            <div class="activity-box">\
+                <div class="box-main">\
+                    <div class="contributor">\
+                        <p>'+activities[i]["date"]+' '+activities[i]["group"]+' '+activities[i]["contributor"]+'</p>\
+                    </div>\
+                    <div class="main">\
+                        <div class="record">\
+                            <li id="target" class="title">目標</li>\
+                            <div class="contents"><p>'+activities[i]["target"]+'</p></div>\
+                        </div>\
+                        <div class="record">\
+                            <li id="do" class="title">できたこと　達成度：'+activities[i]["complete"]+' %</li>\
+                            <div class="contents"><p>'+activities[i]["do"]+'</p></div>\
+                        </div>\
+                        <div class="record">\
+                            <li id="share" class="title">共有したいこと</li>\
+                            <div class="contents"><p>'+activities[i]["share"]+'</p></div>\
+                        </div>\
+                    </div>\
+                </div>\
+            </div>';
         }
         e_colum_reverse.setAttribute("style","");
         e_cr_p.setAttribute("style","");
@@ -123,35 +174,41 @@ function activities_view(kind, colum) { // kind - person, group   colum - normal
 
 
 /* submit */
-var e_date = document.getElementById("date");
-var e_group = document.getElementById("group");
-var e_contributor = document.getElementById("contributor");
-var e_target = document.getElementById("target");
-var e_do = document.getElementById("do");
-var e_share = document.getElementById("share");
-
 function submit(kind) {
-    var mid = ""; // user mid
+    var e_date = document.getElementById("date");
+    var e_group = document.getElementById("group");
+    var e_contributor = document.getElementById("contributor");
+    var e_target = document.getElementById("target");
+    var e_do = document.getElementById("do");
+    var e_complete = document.getElementById("complete");
+    var e_share = document.getElementById("share");
+
+    var mid = getCookie("session"); // user mid
     var date = e_date.value.replace(/-/g, "/");
     var group = e_group.value;
     var contributor = e_contributor.value;
     var target_text = e_target.value;
     var do_text = e_do.value;
+    var complete = e_complete.value;
     var share_text = e_share.value;
     if(!group){
-        alert("所属班が記入されていません。");
+        alert("”所属班”が記入されていません。");
         return 0;
     }
     if(!contributor){
-        alert("入力者が記入されていません。");
+        alert("”入力者”が記入されていません。");
         return 0;
     }
     if(!target_text){
         alert("”目標”が記入されていません。");
         return 0;
     }
+    if(!complete){
+        alert("”達成度”が記入されていません。");
+    }
     if(!do_text){
         alert("”できたこと”が記入されていません。");
+        return 0;
     }
     $.post("assets/submit.php", 
         {
@@ -162,12 +219,12 @@ function submit(kind) {
             "contributor": contributor,
             "target": target_text,
             "do": do_text,
+            "complete": complete,
             "share": share_text
         }, 
         function(data) {
             console.log("activity submit.");
             console.log(data);
     });
-    function reload(){ location.reload(); }
-    setTimeout(reload, 1000);
+    setTimeout(function(){location.reload();}, 1000);
 }
