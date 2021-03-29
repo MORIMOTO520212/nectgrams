@@ -68,7 +68,7 @@ div.main{
 }
 
 div.product_sb{
-    width: 70%;
+    max-width: 1200px;
     height: 350px;
     /*border: solid 1px;*/
     margin: 3% auto;
@@ -91,7 +91,11 @@ div.screen img{
     height: 300px;
     object-fit: cover;
     border-radius: 30px;
+    box-sizing: border-box;
     margin: 6px 6px 0 6px;
+}
+div.screen img:hover{
+    border: 2px solid #ffffff;
 }
 div.product_sb .scroll{
     position: relative;

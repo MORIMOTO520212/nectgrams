@@ -9,8 +9,8 @@ while($row = $result->fetch_row()) $userData[] = $row;
 $session = sessionCheck($userData); // return true or false.
 
 // get products json data
-$products_data = file_get_contents("database/products.json");
-$products_data = json_encode($products_data);
+$topics_data = file_get_contents("database/topics.json");
+$topics_data = json_encode($topics_data);
 //$products_data = mb_convert_encoding($products_data, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
 //$products = json_decode($products_data, true);
 ?>
@@ -26,21 +26,21 @@ $products_data = json_encode($products_data);
         <?php require "container/open_graph_protocol.html" ?>
     </head>
     <body>
-        <script>var products = JSON.parse(<?php echo $products_data ?>);</script>
+        <script>var topics = JSON.parse(<?php echo $topics_data ?>);</script>
         <script>var session = <?php echo $session ?>;</script>
         <?php require "container/header.html" ?>
         <div class="main">
             <div class="product_sb">
                 <div class="scroll">
-                    <a href="javascript:scroll_view('back');"></a>
+                    <a href="javascript:scroll_view('back', true);"></a>
                     <div class="btn"><img src="assets/left_arrow.png"></div>
                 </div>
                 <div id="screen" class="screen">
-                    <img id="scroll_img_1" src="sample_images/img_01.jpg">
-                    <img id="scroll_img_2" src="sample_images/img_03.png">
+                    <img id="scroll_img_1" src>
+                    <img id="scroll_img_2" src>
                 </div>
                 <div class="scroll">
-                    <a href="javascript:scroll_view('next');"></a>
+                    <a href="javascript:scroll_view('next', true);"></a>
                     <div class="btn"><img src="assets/right_arrow.png"></div>
                 </div>
                 <div id="sb_btn_s"></div>
