@@ -12,7 +12,7 @@ if (mysqli_connect_errno()) {
     exit();
 }
 
-// create query
+/* database check */
 $query = "SELECT * FROM users";
 $result = $mysqli->query($query); // run query.
 if(!$result) echo "failed to run query.";

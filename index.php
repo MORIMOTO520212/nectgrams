@@ -2,11 +2,8 @@
 require "container/connect_mysql_users.php";
 require "container/login_session_check.php";
 
-// vew database
-$userData = array();
-while($row = $result->fetch_row()) $userData[] = $row;
 
-$session = sessionCheck($userData); // return true or false.
+$session = sessionCheck($mysqli); // return true or false.
 
 // get products json data
 $topics_data = file_get_contents("database/topics.json");
@@ -18,11 +15,8 @@ $topics_data = json_encode($topics_data);
 <html>
     <head>
         <title>Nectgrams - サークルページ</title>
-        <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="assets/style.css">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
+        <?php require "container/metadata.html" ?>
         <?php require "container/open_graph_protocol.html" ?>
     </head>
     <body>
@@ -141,7 +135,7 @@ $topics_data = json_encode($topics_data);
                         <div class="question">
                             <div class="a-icon"><p>A</p></div>
                             <div class="q-msg">
-                                <p>班のかけ持ちに制限はありません。</p>
+                                <p>班のかけ持ちに制限はありませんので複数の掛け持ちが可能です。</p>
                             </div>
                         </div>
                     </div>

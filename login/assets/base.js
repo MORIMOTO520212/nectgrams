@@ -35,6 +35,7 @@ function onSignIn(googleUser){
     // user id hash create
     sha256.update(profile.getId());
     let hash = sha256.getHash("HEX");
+    console.log(profile.getId());
     if(!session){
         $.ajax({
             type: "POST",
@@ -59,24 +60,21 @@ function onSignIn(googleUser){
             url: "assets/g_signin_submit.php",
             data: {"mid": getCookie("session"), "g_signin_hash": hash},
             success: function(res){
-                if(res){
-                    alert("Googleアカウントを正常に紐づけました。");
-                }else if("existed"==res){
-                   alert("既にGoogleアカウントは紐づいています。");
-                }else{
+                if("existed"==res){
+                    console.log("google signin existed.");
+                }else if("completed"==res){
+                   alert("Googleアカウントを正常に紐づけました。");
+                   setTimeout(function(){location.reload()}, 1000);
+                }else if("failed"==res){
                     alert("Googleアカウントの紐づけに失敗しました。\nコンタクトページから関係者に問い合わせてください。");
+                }else{
+                    alert(res);
                 }
             },
             error: function(){
                 alert("通信エラー.");
             }
         });
-        setTimeout(function(){location.reload()}, 1000);
+        
     }
-}
-
-/* logout */
-function logout(){
-    document.cookie = "session=;path=/";
-    setTimeout(function(){location.reload()}, 1000);
 }

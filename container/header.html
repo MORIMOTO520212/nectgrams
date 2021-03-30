@@ -67,7 +67,11 @@
 
 </div>
 <script>
-    var base_url = location.origin+"/nectgrams";
+    if("localhost"==location.host){
+        var base_url = location.origin+"/nectgrams";
+    }else{
+        var base_url = location.origin;
+    }
 
     // current page button hilight.
     function borderDecoration(id) {

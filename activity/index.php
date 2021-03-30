@@ -1,13 +1,19 @@
 <?php
 require "../container/connect_mysql_users.php";
 require "../container/login_session_check.php";
+require "../container/get_user_data.php";
 
 $userData = array(); // ユーザーデータ
 
-// データベース表示
-while($row = $result->fetch_row()) $userData[] = $row;
-
-$session = sessionCheck($userData); // return true or false.
+$session = sessionCheck($mysqli); // return true or false.
+if($session){
+    $userData = get_user_data($mysqli, $_COOKIE["session"]);
+    $userName = base64_decode($userData[4]);
+    $userGroup = base64_decode($userData[5]);
+}else{
+    $userName = "";
+    $userGroup = "";
+}
 
 // get products json data
 $activities_data = file_get_contents("../database/activities.json");
@@ -21,17 +27,16 @@ $mysqli->close();
 <html>
     <head>
         <title>Nectgrams - 活動</title>
-        <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="assets/style.css">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="../container/getCookie.js"></script>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
+        <?php require "../container/metadata.html" ?>
         <?php require "../container/open_graph_protocol.html" ?>
     </head>
     <body>
-        <script>var session = <?php echo $session ?>;</script>
+        <script>
+            var session = <?php echo $session ?>;
+            var userName = "<?php echo $userName ?>";
+            var userGroup = "<?php echo $userGroup ?>";
+        </script>
         <?php require "../container/header.html" ?>
         <div class="main">
             <div class="control">

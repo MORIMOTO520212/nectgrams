@@ -1,16 +1,15 @@
 <?php
-function sessionCheck($userData) {
+function sessionCheck($mysqli) {
     // user session
     $session = 0;
-    $userSession = ""; // ログインしてない場合  
+    $mid = ""; // ログインしてない場合  
     foreach($_COOKIE as $key => $value){ // cookie確認と取得
         if("session" == $key){
-            $userSession = $_COOKIE["session"];
+            $mid = $_COOKIE["session"];
         }
     }
-    foreach($userData as $user){
-        $sql_mid = $user[3];
-        if($userSession == $sql_mid) $session = 1;
+    if($mysqli->query("SELECT mid FROM users WHERE mid='$mid'")->fetch_row()){
+        $session = 1;
     }
     return $session;
 }

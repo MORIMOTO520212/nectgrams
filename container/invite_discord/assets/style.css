@@ -1,0 +1,105 @@
+html{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+body{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #37393f;
+}
+p, input{
+    color: #fff;
+    font-family: inherit;
+    margin: 0;
+}
+
+/* header */
+div.header{
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+}
+div.header p{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* user */
+div.user{
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+div.userName, div.name{
+    display: inline-block;
+    vertical-align: middle;
+}
+div.name input{
+    width: 70px;
+    border: none;
+    font-size: 16px;
+    background-color: #37393f;
+    padding: 0;
+}
+div.userName p{
+    font-weight: 600;
+}
+
+/* add friend button */
+div.add-friend{
+    width: 100%;
+}
+div.copy-btn{
+    position: relative;
+    width: 70px;
+    height: 22px;
+    background-color: #5ed65e;
+    border-radius: 10px;
+    margin: 0 auto;
+    text-align: center;
+}
+div.copy-btn a{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+div.copy-btn p{
+    font-weight: 600;
+}
+
+/* discord link */
+div.discord-link{
+    position: relative;
+    width: 120px;
+    height: 22px;
+    text-align: center;
+    background-color: #5973e7;
+    border-radius: 10px;
+    margin: 30px auto;
+}
+div.discord-link a{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+div.discord-link p{
+    font-weight: 600;
+}
+
+
+/* message */
+div.msg{
+    margin-top: 30px;
+    width: 100%;
+}

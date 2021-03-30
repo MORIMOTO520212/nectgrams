@@ -10,12 +10,14 @@ while($row = $result->fetch_row()) $userData[] = $row;
 $mid = $_POST["mid"];
 $gsh = $_POST["g_signin_hash"];
 
+
 $res_mid = $mysqli->query("SELECT * FROM users WHERE mid LIKE '$mid'");
 $user = array();
 $user = $res_mid->fetch_row();
-$res = "";
+$res = "failed";
 if(!$user[2]){ //submit.
-    $res = $mysqli->query("UPDATE users SET gsh='$gsh' WHERE mid LIKE '$mid'");
+    $mysqli->query("UPDATE users SET gsh='$gsh' WHERE mid LIKE '$mid'");
+    $res = "completed";
 }else{ // gsh existed.
     $res = "existed";
 }
@@ -23,5 +25,6 @@ if(!$user[2]){ //submit.
 // 終了
 $mysqli->close();
 
-return $res;
+
+echo $res;
 ?>

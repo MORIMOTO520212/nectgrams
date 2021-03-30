@@ -2,22 +2,14 @@
 require "../container/connect_mysql_users.php";
 require "../container/login_session_check.php";
 
-$userData = array(); // ユーザーデータ
-
-// データベース表示
-while($row = $result->fetch_row()) $userData[] = $row;
-
-$session = sessionCheck($userData); // return true or false.
+$session = sessionCheck($mysqli); // return true or false.
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Nectgrams - コンタクト</title>
-        <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="assets/style.css">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
+        <?php require "../container/metadata.html" ?>
     </head>
     <body>
         <script>var session = <?php echo $session ?>;</script>
@@ -32,7 +24,7 @@ $session = sessionCheck($userData); // return true or false.
                 <div class="control"><p>サークル管理</p></div>
                 <div class="manager">
                     <div>
-                        <a class="discord" href="#" target="_blank" rel="noopener"><img src="assets/Discord-Logo-Color.svg"></a>
+                        <a class="discord" href="#" onclick="window.open('../container/invite_discord/?name=囮猫&user=囮猫#4996','subwin','width=300,height=300');return false;"><img src="assets/Discord-Logo-Color.svg"></a>
                         <a class="twitter" href="#" target="_blank" rel="noopener"><img src="assets/Twitter-social-icon.svg"></a>
                         <p>稲野辺 快生</p>
                     </div>
@@ -44,17 +36,17 @@ $session = sessionCheck($userData); // return true or false.
                 <div class="control"><p>ホームページ管理</p></div>
                 <div class="manager">
                     <div>
-                        <a class="discord" href="#" target="_blank" rel="noopener"><img src="assets/Discord-Logo-Color.svg"></a>
+                        <a class="discord" href="#" onclick="window.open('../container/invite_discord/?name=morimotoyuma.&user=morimotoyuma.#0422','subwin','width=300,height=300');return false;"><img src="assets/Discord-Logo-Color.svg"></a>
                         <a class="twitter" href="https://twitter.com/Medaka_Bridle" target="_blank" rel="noopener"><img src="assets/Twitter-social-icon.svg"></a>
                         <p>森本 悠真</p>
                     </div>
                     <div>
-                        <a class="discord" href="#" target="_blank" rel="noopener"><img src="assets/Discord-Logo-Color.svg"></a>
+                        <a class="discord" href="#" onclick="window.open('../container/invite_discord/?name=さほ&user=さほ#8285','subwin','width=300,height=300');return false;"><img src="assets/Discord-Logo-Color.svg"></a>
                         <a class="twitter" href="#" target="_blank" rel="noopener"><img src="assets/Twitter-social-icon.svg"></a>
                         <p>近藤 紗帆</p>
                     </div>
                     <div>
-                        <a class="discord" href="#" target="_blank" rel="noopener"><img src="assets/Discord-Logo-Color.svg"></a>
+                        <a class="discord" href="#" onclick="window.open('../container/invite_discord/?name=でもそれってあなたの感想ですよね？&user=でもそれってあなたの感想ですよね？#5056','subwin','width=300,height=300');return false;"><img src="assets/Discord-Logo-Color.svg"></a>
                         <a class="twitter" href="#" target="_blank" rel="noopener"><img src="assets/Twitter-social-icon.svg"></a>
                         <p>栗田 悠矢</p>
                     </div>

@@ -1,0 +1,20 @@
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="602046748429-g7tk5ermd7p7vcksmt55eisldsnv51mh.apps.googleusercontent.com">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
+<link id="icon" rel="icon" type="image/x-icon" href>
+<script id="logout" src></script>
+<script id="getCookie" src></script>
+<script>
+    if("localhost"==location.host){
+        var base_url = location.origin+"/nectgrams";
+    }else{
+        var base_url = location.origin;
+    }
+    document.getElementById("icon").setAttribute("href", base_url+"/assets/nectgrams_icon.ico");
+    document.getElementById("logout").setAttribute("src", base_url+"/container/logout.js");
+    document.getElementById("getCookie").setAttribute("src", base_url+"/container/getCookie.js");
+</script>
