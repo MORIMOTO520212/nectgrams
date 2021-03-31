@@ -1,12 +1,3 @@
-/* logout */
-function logout(){
-    document.cookie = "session=;path=/";
-    function reload(){ location.reload(); }
-    setTimeout(reload, 1000);
-}
-
-
-
 /* product upload */
 var element_setimg = document.getElementById("setimg");
 var element_header = document.getElementById("header");
@@ -99,8 +90,7 @@ function submit(){
             console.log("product submit.");
             console.log(data);
     });
-    function reload(){ location.reload(); }
-    setTimeout(reload, 1000);
+    setTimeout(function(){location.reload()}, 1000);
 }
 
 /* markdown */
@@ -114,7 +104,6 @@ $("textarea").on("keyup", function() {
     e_preview.innerHTML = markdown(data);
 });
 
-/* sample */
 e_ta_markdown.value = sample_txt;
 e_preview.innerHTML = markdown(sample_txt);
 
@@ -137,4 +126,17 @@ function markdownCloseWindow(){
     e_main.setAttribute("style","");
     e_document.setAttribute("style","display:none;");
     console.log("close the Markdown window.");
+}
+
+/* document view */
+e_document_view = document.getElementById("document_view");
+e_document_main = document.getElementById("document_main");
+e_document_view_title = document.getElementById("document_view_title");
+function document_view(i){
+    e_document_view.setAttribute("style","");
+    e_document_view_title.innerText = products[i]["title"];
+    e_document_main.innerHTML = markdown(products[i]["document"]);
+}
+function documentCloseWindow(){
+    e_document_view.setAttribute("style","display:none;");
 }

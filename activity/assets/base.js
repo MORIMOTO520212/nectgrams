@@ -1,10 +1,3 @@
-/* logout */
-function logout(){
-    document.cookie = "session=;path=/";
-    function reload(){ location.reload(); }
-    setTimeout(reload, 1000);
-}
-
 function sort_database(jsonData) { /* yyyy/mm/dd sort */
     var sort_db = [];
     var _jsonData = [];

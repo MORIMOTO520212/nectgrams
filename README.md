@@ -1,9 +1,35 @@
 # Nectgrams
 <img src="https://user-images.githubusercontent.com/28892090/99180929-ee6d6f80-276d-11eb-8453-f8e0e8e817c4.png" width="400">  
 
+### システム・機能一覧
+[ネットワーク]
+- ドメイン
+- SSL化
+
+[ホームページ]  
+- トピックススライド
+- Open Graph Protocol
+
+[作品ページ]
+- 作品閲覧
+- 作品投稿フォーム
+- 作品内容投稿フォーム（Markdown記述法）
+
+[活動ページ]
+- 活動記録閲覧
+- 活動記録投稿フォーム
+- 活動記録並び替え
+
+[ログイン]
+- ログインフォーム
+- Google SignIn
+- ログアウトボタン
+
+[データベース]
+- MySQL
+- JSON
+
 ### やること
-- logout.jsを作る。  
-- SSL化  
 
 [ホームページ]  
 - モバイル端末の画面を作る。  

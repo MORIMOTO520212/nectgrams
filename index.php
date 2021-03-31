@@ -20,6 +20,58 @@ $topics_data = json_encode($topics_data);
         <?php require "container/open_graph_protocol.html" ?>
     </head>
     <body>
+        <div class="block">
+            <div class="smart-header">
+                <div class="smart-logo">
+                    <p><img src="assets/nectgrams_icon.png">Nectgrams</p>
+                </div>
+            </div>
+            <div class="smart-main">
+                <div class="smart-message"><p>申し訳ございませんが、現在スマートフォン向けのウェブサイトは開発中ですので、パソコンからのアクセスをお願い致します。</p></div>
+                <div class="smart-m_b">
+                    <div class="title"><p>共　創</p></div>
+                    <div class="msg"><p>
+                        チームとして最高のモノを作り上げる環境を提供します。プログラミングは大学でも学び、
+                        かつ独学でも習得できます。Nectgramsはプログラミングスキルの向上を一つの結果と捉え、より実践的かつその応用の場として、
+                        メンバー一人ひとりがプロジェクトを着々と達成し、成果を残す。複数人の力でより大きなものを作り上げることができる。
+                        それを目的としています。その為、活動報告や進捗チェックが頻繁に行われたり、班が複数存在し、
+                        取り扱うテーマに制限がないなどの特徴があります。一方、「個人制作を楽しみを共有する」「プログラミングのスキルアップをする」
+                        といった活動は基本的にサポートされません。
+                    </p></div>
+                </div>
+                <div class="smart-m_b">
+                    <div class="title"><p>このサークルについて</p></div>
+                    <div class="msg">
+                        <p>
+                            各班に分かれてそれぞれの活動を行います。
+                            主にDiscordで活動していますが、ミーティングをする場合は学校内で集まり行っています。
+                        </p>
+                        <div class="team"><p>・WEB班</p></div>
+                        <div class="msg"><p>
+                            WEB班は主にウェブサイトやウェブアプリケーションをグループで製作します。そのほかにも、
+                            Linux操作やデータベース、ネットワーク構築、SEOの勉強などもしています。ウェブやサーバー、ネットワークに興味がある方は大歓迎です！
+                            ちなみに、このホームページはWEB班が製作しています。
+                        </p></div>
+                        <div class="team"><p>・NNC深層学習班</p></div>
+                        <div class="msg"><p>
+                            人工知能の
+                        </p></div>
+                        <div class="team"><p>・アプリ開発班</p></div>
+                        <div class="msg"><p>
+                            アプリ開発班はスマートフォンのアプリケーションの製作をしています。
+                        </p></div>
+                        <div class="team"><p>・Unityゲーム開発班</p></div>
+                        <div class="msg"><p></p></div>
+                    </div>
+                </div>
+                <div class="smart-footer">
+                    <div class="f-main">
+                        <div class="f-title"><p>Nectgrams</p></div>
+                        <div class="f-msg"><p>パソコンからのアクセスでは作品、活動、FAQ、ページなどにアクセスすることができます。</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script>var topics = JSON.parse(<?php echo $topics_data ?>);</script>
         <script>var session = <?php echo $session ?>;</script>
         <?php require "container/header.html" ?>
@@ -55,13 +107,24 @@ $topics_data = json_encode($topics_data);
             <div class="m_b">
                 <div class="title"><p>このサークルについて</p></div>
                 <div class="msg">
-                    <p>各班に分かれてそれぞれの活動を行います。</p>
+                    <p>
+                        各班に分かれてそれぞれの活動を行います。
+                        主にDiscordで活動していますが、ミーティングをする場合は学校内で集まり行っています。
+                    </p>
                     <div class="team"><p>・WEB班</p></div>
-                    <div class="msg"><p>WEB班の紹介文を書きます。</p></div>
+                    <div class="msg"><p>
+                        WEB班は主にウェブサイトやウェブアプリケーションをグループで製作します。そのほかにも、
+                        Linux操作やデータベース、ネットワーク構築、SEOの勉強などもしています。ウェブやサーバー、ネットワークに興味がある方は大歓迎です！
+                        ちなみに、このホームページはWEB班が製作しています。
+                    </p></div>
                     <div class="team"><p>・NNC深層学習班</p></div>
-                    <div class="msg"><p></p></div>
+                    <div class="msg"><p>
+                        人工知能の
+                    </p></div>
                     <div class="team"><p>・アプリ開発班</p></div>
-                    <div class="msg"><p></p></div>
+                    <div class="msg"><p>
+                        アプリ開発班はスマートフォンのアプリケーションの製作をしています。
+                    </p></div>
                     <div class="team"><p>・Unityゲーム開発班</p></div>
                     <div class="msg"><p></p></div>
                 </div>

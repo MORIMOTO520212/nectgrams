@@ -7,6 +7,7 @@ $session = sessionCheck($mysqli); // return true or false.
 
 // get products json data
 $products_data = file_get_contents("../database/products.json");
+$js_products = json_encode($products_data);
 $products_data = mb_convert_encoding($products_data, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
 $products = json_decode($products_data, true);
 
@@ -24,7 +25,10 @@ $mysqli->close();
         <?php require "../container/open_graph_protocol.html" ?>
     </head>
     <body>
-    <script>var session = <?php echo $session ?>;</script>
+        <script>
+            var session = <?php echo $session ?>;
+            var products = JSON.parse(<?php echo $js_products ?>);
+        </script>
         <?php require "../container/header.html" ?>
         <div id="main" style>
             <div id="products">
@@ -47,9 +51,11 @@ $mysqli->close();
                             </div>
                         </div>';
                     }
+                    $i=0;
                     foreach($products as $product){
                         echo '
                         <div class="product-box">
+                            <a href="javascript:document_view('.$i.')"></a>
                             <div class="box-main">
                                 <div class="image">
                                     <img src="../'.$product["photo"].'">
@@ -61,6 +67,7 @@ $mysqli->close();
                                 </div>
                             </div>
                         </div>';
+                        $i++;
                     }
                 ?>
             </div>
@@ -73,6 +80,13 @@ $mysqli->close();
             <textarea id="input_markdown"></textarea>
             <div id="preview"></div>
             <div class="document-submit-btn"><a href="javascript:document_submit();">保存する</a></div>
+        </div>
+        <div id="document_view" style="display:none;">
+            <div class="top">
+            <div class="product-title"><p id="document_view_title">作品のタイトル</p></div>
+                <div id="markdown-close"><a href="javascript:documentCloseWindow();"><img src="../assets/close_icon.svg"></a></div>
+            </div>
+            <div id="document_main"><p>内容</p></div>
         </div>
         <div class="footer">
             <div class="f-main">

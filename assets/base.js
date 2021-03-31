@@ -44,9 +44,3 @@ scroll_view("next", false); // initial view.
 var auto_scroll = setInterval(function(){ // auto scroll view.
     scroll_view("next", false);
 }, 5000);
-
-/* logout */
-function logout(){
-    document.cookie = "session=;path=/";
-    setTimeout(function(){location.reload()}, 1000);
-}
