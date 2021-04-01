@@ -6,8 +6,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
 <link id="icon" rel="icon" type="image/x-icon" href>
-<script id="logout" src></script>
-<script id="getCookie" src></script>
 <script>
     if("localhost"==location.host){
         var base_url = location.origin+"/nectgrams";
@@ -15,6 +13,11 @@
         var base_url = location.origin;
     }
     document.getElementById("icon").setAttribute("href", base_url+"/assets/nectgrams_icon.ico");
-    document.getElementById("logout").setAttribute("src", base_url+"/container/logout.js");
-    document.getElementById("getCookie").setAttribute("src", base_url+"/container/getCookie.js");
+
+    const script_logout = document.createElement("script");
+    const script_getCookie = document.createElement("script");
+    script_logout.src = base_url+"/container/logout.js";
+    script_getCookie.src = base_url+"/container/getCookie.js";
+    document.getElementById("head").appendChild(script_logout);
+    document.getElementById("head").appendChild(script_getCookie);
 </script>

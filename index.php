@@ -13,7 +13,7 @@ $topics_data = json_encode($topics_data);
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
+    <head id="head">
         <title>Nectgrams - サークルページ</title>
         <link rel="stylesheet" type="text/css" href="assets/style.css">
         <?php require "container/metadata.html" ?>
@@ -119,14 +119,17 @@ $topics_data = json_encode($topics_data);
                     </p></div>
                     <div class="team"><p>・NNC深層学習班</p></div>
                     <div class="msg"><p>
-                        人工知能の
+                        NNC（Neural Network Console）を活用してAIの深層学習を学んでいます。
                     </p></div>
                     <div class="team"><p>・アプリ開発班</p></div>
                     <div class="msg"><p>
-                        アプリ開発班はスマートフォンのアプリケーションの製作をしています。
+                        アプリ開発班はスマートフォンのアプリケーションの製作をします。他にもアプリケーション製作を中心に、Java言語のを学んだり、レイアウトを考えたりしています。
+                        現在、アプリ開発班はToDoリストを製作しています。
                     </p></div>
                     <div class="team"><p>・Unityゲーム開発班</p></div>
-                    <div class="msg"><p></p></div>
+                    <div class="msg"><p>
+                        Unityを使ってゲームの開発をしています。
+                    </p></div>
                 </div>
             </div>
             <div class="m_b">
@@ -143,6 +146,34 @@ $topics_data = json_encode($topics_data);
                             <div class="a-icon"><p>A</p></div>
                             <div class="q-msg">
                                 <p>知識は問いません。プロジェクトをやり切るやる気を問います。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-box">
+                        <div class="question">
+                            <div class="q-icon"><p>Q</p></div>
+                            <div class="q-msg">
+                                <p>プログラミングに触れたことがないのですが、参加することはできますか。</p>
+                            </div>
+                        </div>
+                        <div class="question">
+                            <div class="a-icon"><p>A</p></div>
+                            <div class="q-msg">
+                                <p>可能です。プログラミング自体は大学でも触れますし、追々身に着ければ問題ありません。「やりたいこと」が明確である事が大切です。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-box">
+                        <div class="question">
+                            <div class="q-icon"><p>Q</p></div>
+                            <div class="q-msg">
+                                <p>具体的になにをしているのか教えて欲しいです。</p>
+                            </div>
+                        </div>
+                        <div class="question">
+                            <div class="a-icon"><p>A</p></div>
+                            <div class="q-msg">
+                                <p>何をしているのかは班によって変わりますが、共通するのは、ゲームであれアプリであれ、班で何を作るかを決め、計画を練り、制作を行うという事です。Nectgramsはその枠組みと場を提供しています。</p>
                             </div>
                         </div>
                     </div>
@@ -204,20 +235,13 @@ $topics_data = json_encode($topics_data);
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="footer">
-            <div class="f-main">
-                <div class="f-title"><p>Nectgrams</p></div>
-                <div class="f-msg"><p>ここへフッターのメッセージを書きます。</p></div>
-                <div class="f-link">
-                    <a href="#">作品</a>
-                    <a href="#">活動</a>
-                    <a href="#">このサークルについて</a>
-                    <a href="#">FAQ</a>
-                    <a href="#">コンタクト</a>
-                </div>
+            <div class="m_b">
+                    <div class="title"><p>Languages</p></div>
+                    <div class="msg"><p>Nectgramsのウェブサイトはこれらのファイルから成り立っています。</p></div>
+                    <div class="img"><img src="assets/languages.png"></div>
             </div>
         </div>
+        <?php require "container/footer.html" ?>
         <script src="assets/base.js"></script>
     </body>
 </html>

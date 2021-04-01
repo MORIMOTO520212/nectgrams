@@ -8,7 +8,7 @@ $mysqli->close();
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
+    <head id="head">
         <title>Nectgrams - ログイン</title>
         <link rel="stylesheet" type="text/css" href="assets/style.css">
         <script src="assets/sha256.js"></script>

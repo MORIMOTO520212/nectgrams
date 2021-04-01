@@ -1,16 +1,59 @@
+<style>
+    /* footer */
+    div.footer{
+        position: relative;
+        width: 100%;
+        height: 130px;
+        background-color: #000000;
+    }
+    div.footer .f-main .f-title{
+        width: 95%;
+        margin: 0 auto;
+    }
+    div.footer .f-main .f-title p{
+        font-size: 30px;
+        color: #eee;
+    }
+    div.footer .f-main .f-msg{
+        width: 70%;
+        margin: 0 auto;
+    }
+    div.footer .f-main .f-msg p{
+        font-size: 16px;
+        color: #eee;
+    }
+    div.footer .f-main .f-link{
+        width: 500px;
+        text-align: center;
+        margin: 10px auto;
+    }
+    div.footer .f-main .f-link a{
+        text-decoration: underline;
+        margin: 0 2%;
+    }
+</style>
 <div class="footer">
     <div class="f-main">
         <div class="f-title"><p>Nectgrams</p></div>
-        <div class="f-msg"><p>ここへフッターのメッセージを書きます。</p></div>
+        <div class="f-msg"><p>このページへアクセスしてくれてありがとうございます。</p></div>
         <div class="f-link">
-            <a href="#">作品</a>
-            <a href="#">活動</a>
-            <a href="#">このサークルについて</a>
-            <a href="#">FAQ</a>
-            <a href="#">コンタクト</a>
+            <a id="href_products" href="#">作品</a>
+            <a id="href_activity" href="#">活動</a>
+            <a id="href_about" href="#">このサークルについて</a>
+            <a id="href_faq" href="#">FAQ</a>
+            <a id="href_contact" href="#">コンタクト</a>
         </div>
     </div>
 </div>
 <script>
-    
+    if("localhost"==location.host){
+        var base_url = location.origin+"/nectgrams";
+    }else{
+        var base_url = location.origin;
+    }
+    document.getElementById("href_products").setAttribute("href", base_url+"/products");
+    document.getElementById("href_activity").setAttribute("href", base_url+"/activity");
+    document.getElementById("href_about").setAttribute("href", base_url+"");
+    document.getElementById("href_faq").setAttribute("href", base_url+"");
+    document.getElementById("href_contact").setAttribute("href", base_url+"/contact");
 </script>

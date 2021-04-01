@@ -140,7 +140,7 @@ div.product_sb .scroll img{
     height: 100%;
 }
 
-/* サークルについて */
+/* contents */
 div.m_b{
     margin: 50px auto;
     border-bottom: solid 1px #a0a0a0;
@@ -165,7 +165,16 @@ div.m_b .msg .msg{
     font-size: 1vw;
     margin: 30px auto;
 }
+div.m_b .img{
+    width: 80%;
+    margin: 20px auto;
+}
+div.m_b .img img{
+    width: 352px;
+    border-radius: 10px;
+}
 
+/* FAQ */
 div.m_b .faq-main{
     width: 80%;
     /*border: solid 1px;*/
@@ -316,41 +325,11 @@ div.smart-footer .f-main .f-msg p{
     color: #eee;
 }
 
-/* footer */
-div.footer{
-    position: relative;
-    width: 100%;
-    height: 130px;
-    background-color: #000000;
-}
-div.footer .f-main .f-title{
-    width: 95%;
-    margin: 0 auto;
-}
-div.footer .f-main .f-title p{
-    font-size: 30px;
-    color: #eee;
-}
-div.footer .f-main .f-msg{
-    width: 70%;
-    margin: 0 auto;
-}
-div.footer .f-main .f-msg p{
-    font-size: 16px;
-    color: #eee;
-}
-div.footer .f-main .f-link{
-    width: 500px;
-    text-align: center;
-    margin: 10px auto;
-}
-div.footer .f-main .f-link a{
-    text-decoration: underline;
-    margin: 0 2%;
-}
-
 @media screen and (max-width: 1300px){
     div.m_b .msg{
+        font-size: 1.5vw;
+    }
+    div.m_b .msg .msg{
         font-size: 1.5vw;
     }
     div.faq-box .question .q-msg{

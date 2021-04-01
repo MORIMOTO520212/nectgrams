@@ -6,7 +6,7 @@ $session = sessionCheck($mysqli); // return true or false.
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
+    <head id="head">
         <title>Nectgrams - コンタクト</title>
         <link rel="stylesheet" type="text/css" href="assets/style.css">
         <?php require "../container/metadata.html" ?>
@@ -53,18 +53,6 @@ $session = sessionCheck($mysqli); // return true or false.
                 </div>
             </div>
         </div>
-        <div class="footer">
-            <div class="f-main">
-                <div class="f-title"><p>Nectgrams</p></div>
-                <div class="f-msg"><p>ここへフッターのメッセージを書きます。</p></div>
-                <div class="f-link">
-                    <a href="../products/">作品</a>
-                    <a href="../activity/">活動</a>
-                    <a href="../">このサークルについて</a>
-                    <a href="../">FAQ</a>
-                    <a href="../contact/">コンタクト</a>
-                </div>
-            </div>
-        </div>
+        <?php require "../container/footer.html" ?>
     </body>
 </html>

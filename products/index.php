@@ -16,7 +16,7 @@ $mysqli->close();
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
+    <head id="head">
         <title>Nectgrams - 作品</title>
         <link rel="stylesheet" type="text/css" href="assets/style.css">
         <script src="../container/markdown.js"></script>
@@ -88,19 +88,7 @@ $mysqli->close();
             </div>
             <div id="document_main"><p>内容</p></div>
         </div>
-        <div class="footer">
-            <div class="f-main">
-                <div class="f-title"><p>Nectgrams</p></div>
-                <div class="f-msg"><p>ここへフッターのメッセージを書きます。</p></div>
-                <div class="f-link">
-                    <a href="#">作品</a>
-                    <a href="#">活動</a>
-                    <a href="#">このサークルについて</a>
-                    <a href="#">FAQ</a>
-                    <a href="#">コンタクト</a>
-                </div>
-            </div>
-        </div>
+        <?php require "../container/footer.html" ?>
         <script src="assets/base.js"></script>
     </body>
 </html>
