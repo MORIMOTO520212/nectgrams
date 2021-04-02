@@ -14,6 +14,7 @@ $session = sessionCheck($mysqli); // return true or false.
     <body>
         <script>var session = <?php echo $session ?>;</script>
         <?php require "../container/header.html" ?>
+        <div class="g-signin2" data-onsuccess="onSignIn" style="display:none;"></div>
         <div class="main">
             <div class="msg">
                 <p>意見、改善点、トラブル報告…</p>
@@ -25,8 +26,8 @@ $session = sessionCheck($mysqli); // return true or false.
                 <div class="manager">
                     <div>
                         <a class="discord" href="#" onclick="window.open('../container/invite_discord/?name=囮猫&user=囮猫#4996','subwin','width=300,height=300');return false;"><img src="assets/Discord-Logo-Color.svg"></a>
-                        <a class="twitter" href="#" target="_blank" rel="noopener"><img src="assets/Twitter-social-icon.svg"></a>
-                        <p>稲野辺 快生</p>
+                        <a class="twitter" href="https://twitter.com/I_am_bakeneko" target="_blank" rel="noopener"><img src="assets/Twitter-social-icon.svg"></a>
+                        <p>囮猫</p>
                     </div>
                     <div>
                         <a class="twitter" href="https://twitter.com/nectgrams" target="_blank" rel="noopener"><img src="assets/Twitter-social-icon.svg"></a>

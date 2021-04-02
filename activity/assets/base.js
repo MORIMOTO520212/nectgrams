@@ -63,7 +63,7 @@ function activities_view(kind, colum) { // kind - person, group   colum - normal
                     <input id="date" type="date" value="2021-03-16">\
                     <input id="group" type="text" placeholder="所属班" value="'+userName+'">\
                     <input id="contributor" type="text" placeholder="入力者" value="'+userGroup+'">\
-                    <div class="create-btn"><a href="javascript:submit(\'person\');">投稿</a></div>\
+                    <div class="create-btn"><a href="javascript:submit(\''+kind+'\');">投稿</a></div>\
                 </div>\
                 <div class="main">\
                     <div class="record">\

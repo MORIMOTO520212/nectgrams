@@ -75,6 +75,7 @@ $topics_data = json_encode($topics_data);
         <script>var topics = JSON.parse(<?php echo $topics_data ?>);</script>
         <script>var session = <?php echo $session ?>;</script>
         <?php require "container/header.html" ?>
+        <div class="g-signin2" data-onsuccess="onSignIn" style="display:none;"></div>
         <div class="main">
             <div class="product_sb">
                 <div class="scroll">

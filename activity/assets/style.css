@@ -173,6 +173,7 @@ div.box-main .contributor.inp{
 div.box-main .contributor.inp input{
     display: inline-block;
     vertical-align: middle;
+    width: 160px;
     font-size: 20px;
     border: none;
     padding: 0 0 6px 0;

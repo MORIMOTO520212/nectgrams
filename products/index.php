@@ -30,6 +30,7 @@ $mysqli->close();
             var products = JSON.parse(<?php echo $js_products ?>);
         </script>
         <?php require "../container/header.html" ?>
+        <div class="g-signin2" data-onsuccess="onSignIn" style="display:none;"></div>
         <div id="main" style>
             <div id="products">
                 <?php

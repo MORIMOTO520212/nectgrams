@@ -38,6 +38,7 @@ $mysqli->close();
             var userGroup = "<?php echo $userGroup ?>";
         </script>
         <?php require "../container/header.html" ?>
+        <div class="g-signin2" data-onsuccess="onSignIn" style="display:none;"></div>
         <div class="main">
             <div class="control">
                 <div class="kc">
@@ -49,9 +50,40 @@ $mysqli->close();
                     <div id="colum_reverse" class="pgc-btn right-btn" style><a href="#" onclick="activities_view(0,'reverse');return false;"></a><p id="cr_p" style>古い順</p></div>
                 </div>
             </div>
-            <div id="activities" class="activities"></div>
+            <div id="activities" class="activities">
+                <div class="activity-box">
+                    <div class="box-main">
+                        <div class="contributor inp">
+                            <input id="date" type="date" value="2021-03-16">
+                            <input id="group" type="text" placeholder="所属班" value="">
+                            <input id="contributor" type="text" placeholder="入力者" value="">
+                            <div class="create-btn"><a href="javascript:submit(\'\');">投稿</a></div>
+                        </div>
+                        <div class="main">
+                            <div class="record">
+                                <li class="title">目標</li>
+                                <div class="contents">
+                                    <textarea id="target" placeholder="今回の活動目標を記入してください。"></textarea>
+                                </div>
+                            </div>
+                            <div class="record">
+                                <li class="title">できたこと　　達成度：<input id="complete" type="text" placeholder="50"> %</li>
+                                <div class="contents">
+                                    <textarea id="do" placeholder="活動した内容について記入してください。"></textarea>
+                                </div>
+                            </div>
+                            <div class="record">
+                                <li class="title">共有したいこと</li>
+                                <div class="contents">
+                                    <textarea id="share" placeholder="全体や班の内で共有したいことや疑問点があればそれについて記入してください。"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <?php require "../container/footer.html" ?>
-        <script src="assets/base.js"></script>
+        <!--<script src="assets/base.js"></script>-->
     </body>
 </html>

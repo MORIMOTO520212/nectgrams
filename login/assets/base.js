@@ -24,8 +24,7 @@ function submit(){
             alert("通信エラー.");
         }
     });
-    function reload(){ location.reload(); }
-    setTimeout(reload, 1000);
+    setTimeout(function(){location.reload();}, 1000);
 }
 
 
@@ -47,7 +46,7 @@ function onSignIn(googleUser){
                     document.cookie = "session="+mid+";path=/";
                 }else{
                     alert("このアカウントではログインできません。\nログインできない場合は関係者に問い合わせてください。");
-                }  
+                }
             },
             error: function(){
                 alert("通信エラー.");
@@ -55,26 +54,28 @@ function onSignIn(googleUser){
         });
         setTimeout(function(){location.reload()}, 1000);
     }else{
-        $.ajax({
-            type: "POST",
-            url: "assets/g_signin_submit.php",
-            data: {"mid": getCookie("session"), "g_signin_hash": hash},
-            success: function(res){
-                if("existed"==res){
-                    console.log("google signin existed.");
-                }else if("completed"==res){
-                   alert("Googleアカウントを正常に紐づけました。");
-                   setTimeout(function(){location.reload()}, 1000);
-                }else if("failed"==res){
-                    alert("Googleアカウントの紐づけに失敗しました。\nコンタクトページから関係者に問い合わせてください。");
-                }else{
-                    alert(res);
+        if("1" != getCookie("gsh")){
+            $.ajax({
+                type: "POST",
+                url: "assets/g_signin_submit.php",
+                data: {"mid": getCookie("session"), "g_signin_hash": hash},
+                success: function(res){
+                    if("existed"==res){
+                        console.log("google signin existed."); // sessionにmidを書く
+                    }else if("completed"==res){
+                    alert("Googleアカウントを正常に紐づけました。");
+                    document.cookie = "gsh=1;path=/";
+                    setTimeout(function(){location.reload()}, 1000);
+                    }else if("failed"==res){
+                        alert("Googleアカウントの紐づけに失敗しました。\nコンタクトページから関係者に問い合わせてください。");
+                    }else{
+                        alert(res);
+                    }
+                },
+                error: function(){
+                    alert("通信エラー.");
                 }
-            },
-            error: function(){
-                alert("通信エラー.");
-            }
-        });
-        
+            });
+        }
     }
 }
