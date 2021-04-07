@@ -56,37 +56,62 @@ function activities_view(kind, colum) { // kind - person, group   colum - normal
     else{_colum = colum}
     var source = "";
     if(session){
-        source += '\
-        <div class="activity-box">\
-            <div class="box-main">\
-                <div class="contributor inp">\
-                    <input id="date" type="date" value="2021-03-16">\
-                    <input id="group" type="text" placeholder="所属班" value="'+userName+'">\
-                    <input id="contributor" type="text" placeholder="入力者" value="'+userGroup+'">\
-                    <div class="create-btn"><a href="javascript:submit(\''+kind+'\');">投稿</a></div>\
+        if("person" == kind){
+            source += '\
+            <div class="activity-box">\
+                <div class="box-main">\
+                    <div class="contributor inp">\
+                        <input id="date" type="date" value="2021-03-16">\
+                        <input id="group" type="text" placeholder="所属班" value="'+userName+'">\
+                        <input id="contributor" type="text" placeholder="入力者" value="'+userGroup+'">\
+                        <div class="create-btn"><a href="javascript:submit(\''+kind+'\');">投稿</a></div>\
+                    </div>\
+                    <div class="main">\
+                        <div class="record">\
+                            <li class="title">目標</li>\
+                            <div class="contents">\
+                                <textarea id="target" placeholder="今回の活動目標を記入してください。"></textarea>\
+                            </div>\
+                        </div>\
+                        <div class="record">\
+                            <li class="title">できたこと　　達成度：<input id="complete" type="text" placeholder="50"> %</li>\
+                            <div class="contents">\
+                                <textarea id="do" placeholder="活動した内容について記入してください。"></textarea>\
+                            </div>\
+                        </div>\
+                        <div class="record">\
+                            <li class="title">共有したいこと</li>\
+                            <div class="contents">\
+                                <textarea id="share" placeholder="全体や班の内で共有したいことや疑問点があればそれについて記入してください。"></textarea>\
+                            </div>\
+                        </div>\
+                    </div>\
                 </div>\
-                <div class="main">\
-                    <div class="record">\
-                        <li class="title">目標</li>\
-                        <div class="contents">\
-                            <textarea id="target" placeholder="今回の活動目標を記入してください。"></textarea>\
-                        </div>\
+            </div>';
+        }
+        if("group" == kind){
+            source += '\
+            <div class="activity-box">\
+                <div class="box-main">\
+                    <div class="contributor inp">\
+                        <input id="date" type="date" value="2021-03-16">\
+                        <input id="group" type="text" placeholder="所属班" value="">\
+                        <input id="contributor" type="text" placeholder="入力者" value="">\
+                        <div class="create-btn"><a id="submit" href>投稿</a></div>\
                     </div>\
-                    <div class="record">\
-                        <li class="title">できたこと　　達成度：<input id="complete" type="text" placeholder="50"> %</li>\
-                        <div class="contents">\
-                            <textarea id="do" placeholder="活動した内容について記入してください。"></textarea>\
+                    <div class="main">\
+                        <div class="control control-kind">\
+                            <div class="kc">\
+                                <div id="ak_new" class="pgc-btn left-btn" style><a id="ak_new_a" href="#" onclick="activity_control(\'new\');return false;"></a><p id="ak_new_p" style>新規</p></div>\
+                                <div id="ak_group" class="pgc-btn right-btn" style><a id="ak_group_a" href="#" onclick="activity_control(\'group\');return false;"></a><p id="ak_group_p" style>活動</p></div>\
+                            </div>\
                         </div>\
-                    </div>\
-                    <div class="record">\
-                        <li class="title">共有したいこと</li>\
-                        <div class="contents">\
-                            <textarea id="share" placeholder="全体や班の内で共有したいことや疑問点があればそれについて記入してください。"></textarea>\
-                        </div>\
+                        <div id="ak_contents"></div>\
                     </div>\
                 </div>\
             </div>\
-        </div>';
+            ';
+        }
     }
     if("reverse" == colum){
         for(let i=0; i<activities.length; i++){
@@ -150,6 +175,9 @@ function activities_view(kind, colum) { // kind - person, group   colum - normal
         e_colum_normal.setAttribute("style","background-color:#3d3c4c;");
         e_cn_p.setAttribute("style", "color:#eee;");
     }
+
+    e_activities.innerHTML = source;
+
     if("person" == kind){
         e_group_kind.setAttribute("style","");
         e_gk_p.setAttribute("style","");
@@ -161,51 +189,87 @@ function activities_view(kind, colum) { // kind - person, group   colum - normal
         e_pk_p.setAttribute("style","");
         e_group_kind.setAttribute("style","background-color:#3d3c4c;");
         e_gk_p.setAttribute("style", "color:#eee;");
+        activity_control("group");
     }
-    e_activities.innerHTML = source;
+    
 }
 
 
+function activity_control(control) {
+    var e_ak_new = document.getElementById("ak_new");
+    var e_ak_group = document.getElementById("ak_group");
+    var e_ak_new_p = document.getElementById("ak_new_p");
+    var e_ak_group_p = document.getElementById("ak_group_p");
+    var e_ak_contents = document.getElementById("ak_contents");
+    var e_submit = document.getElementById("submit");
+
+    console.log("activity control",control);
+    if("new" == control){
+        e_ak_group.setAttribute("style","");
+        e_ak_group_p.setAttribute("style","");
+        e_ak_new.setAttribute("style","background-color:#3d3c4c;");
+        e_ak_new_p.setAttribute("style", "color:#eee;");
+        e_submit.setAttribute("href", "javascript:submit('new')");
+        e_ak_contents.innerHTML = '';
+    }
+    if("group" == control){
+        e_ak_new.setAttribute("style","");
+        e_ak_new_p.setAttribute("style","");
+        e_ak_group.setAttribute("style","background-color:#3d3c4c;");
+        e_ak_group_p.setAttribute("style","color:#eee;");
+        e_submit.setAttribute("href", "javascript:submit('group')");
+        e_ak_contents.innerHTML = '\
+        <div class="record">\
+            <li class="title">できたこと　　達成度：<input id="complete" type="text" placeholder="1~10"></li>\
+            <div class="contents">\
+                <textarea id="do" placeholder="活動状況を記入してください。"></textarea>\
+            </div>\
+        </div>\
+        ';
+    }
+}
+
 /* submit */
 function submit(kind) {
+    var mid = getCookie("session"); // user mid
     var e_date = document.getElementById("date");
     var e_group = document.getElementById("group");
     var e_contributor = document.getElementById("contributor");
-    var e_target = document.getElementById("target");
-    var e_do = document.getElementById("do");
-    var e_complete = document.getElementById("complete");
-    var e_share = document.getElementById("share");
-
-    var mid = getCookie("session"); // user mid
     var date = e_date.value.replace(/-/g, "/");
     var group = e_group.value;
     var contributor = e_contributor.value;
-    var target_text = e_target.value;
-    var do_text = e_do.value;
-    var complete = e_complete.value;
-    var share_text = e_share.value;
-    if(!group){
-        alert("”所属班”が記入されていません。");
-        return 0;
-    }
-    if(!contributor){
-        alert("”入力者”が記入されていません。");
-        return 0;
-    }
-    if(!target_text){
-        alert("”目標”が記入されていません。");
-        return 0;
-    }
-    if(!complete){
-        alert("”達成度”が記入されていません。");
-    }
-    if(!do_text){
-        alert("”できたこと”が記入されていません。");
-        return 0;
-    }
-    $.post("assets/submit.php", 
-        {
-            "kind": kind,
+
+    if("person" == kind){
+        var contents = {};
+        let e_target = document.getElementById("target");
+        let e_do = document.getElementById("do");
+        let e_complete = document.getElementById("complete");
+        let e_share = document.getElementById("share");
+        let target_text = e_target.value;
+        let do_text = e_do.value;
+        let complete = e_complete.value;
+        let share_text = e_share.value;
+        if(!group){
+            alert("”所属班”が記入されていません。");
+            return 0;
+        }
+        if(!contributor){
+            alert("”入力者”が記入されていません。");
+            return 0;
+        }
+        if(!target_text){
+            alert("”目標”が記入されていません。");
+            return 0;
+        }
+        if(!complete){
+            alert("”達成度”が記入されていません。");
+        }
+        if(!do_text){
+            alert("”できたこと”が記入されていません。");
+            return 0;
+        }
+        contents = {
+            "kind": "person",
             "mid": mid,
             "date": date,
             "group": group,
@@ -214,10 +278,37 @@ function submit(kind) {
             "do": do_text,
             "complete": complete,
             "share": share_text
-        }, 
+        }
+    }
+    if("group" == kind){
+        let e_do = document.getElementById("do");
+        let e_complete = document.getElementById("complete");
+        let do_text = e_do.value;
+        let complete = e_complete.value;
+        contents = {
+            "kind": "group",
+            "mid": mid,
+            "date": date,
+            "group": group,
+            "contributor": contributor,
+            "do": do_text,
+            "complete": complete
+        }
+    }
+    if("new" == kind){
+        contents = {
+            "kind": "new",
+            "mid": mid,
+            "date": date,
+            "group": group,
+            "contributor": contributor
+        }
+    }
+
+    $.post("assets/submit.php", contents, 
         function(data) {
             console.log("activity submit.");
             console.log(data);
     });
-    setTimeout(function(){location.reload();}, 1000);
+    setTimeout(function(){location.reload()}, 1000);
 }

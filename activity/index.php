@@ -6,6 +6,7 @@ require "../container/get_user_data.php";
 $userData = array(); // ユーザーデータ
 
 $session = sessionCheck($mysqli); // return true or false.
+
 if($session){
     $userData = get_user_data($mysqli, $_COOKIE["session"]);
     $userName = base64_decode($userData[4]);
@@ -57,25 +58,21 @@ $mysqli->close();
                             <input id="date" type="date" value="2021-03-16">
                             <input id="group" type="text" placeholder="所属班" value="">
                             <input id="contributor" type="text" placeholder="入力者" value="">
-                            <div class="create-btn"><a href="javascript:submit(\'\');">投稿</a></div>
+                            <div class="create-btn"><a id="submit" href="javascript:submit(\'\');">投稿</a></div>
                         </div>
                         <div class="main">
-                            <div class="record">
-                                <li class="title">目標</li>
-                                <div class="contents">
-                                    <textarea id="target" placeholder="今回の活動目標を記入してください。"></textarea>
-                                </div>
+                            <div class="control control-kind">
+                                <div class="kc">
+                                    <div id="ak_new" class="pgc-btn left-btn" style><a id="ak_new_a" href="#" onclick="activity_control('new');return false;"></a><p id="ak_new_p" style>新規</p></div>
+                                    <div id="ak_group" class="pgc-btn right-btn" style><a id="ak_group_a" href="#" onclick="activity_control('activity');return false;"></a><p id="ak_group_p" style>活動</p></div>
+                                </div> 
                             </div>
-                            <div class="record">
-                                <li class="title">できたこと　　達成度：<input id="complete" type="text" placeholder="50"> %</li>
-                                <div class="contents">
-                                    <textarea id="do" placeholder="活動した内容について記入してください。"></textarea>
-                                </div>
-                            </div>
-                            <div class="record">
-                                <li class="title">共有したいこと</li>
-                                <div class="contents">
-                                    <textarea id="share" placeholder="全体や班の内で共有したいことや疑問点があればそれについて記入してください。"></textarea>
+                            <div id="ak_contents">
+                                <div class="record">
+                                    <li class="title">できたこと　　達成度：<input id="complete" type="text" placeholder="1~10"></li>
+                                    <div class="contents">
+                                        <textarea id="target" placeholder="活動状況を記入してください。"></textarea>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -84,6 +81,6 @@ $mysqli->close();
             </div>
         </div>
         <?php require "../container/footer.html" ?>
-        <!--<script src="assets/base.js"></script>-->
+        <script src="assets/base.js"></script>
     </body>
 </html>

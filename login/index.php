@@ -7,7 +7,7 @@ $session = sessionCheck($mysqli);
 $mysqli->close();
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="ja">
     <head id="head">
         <title>Nectgrams - ログイン</title>
         <link rel="stylesheet" type="text/css" href="assets/style.css">

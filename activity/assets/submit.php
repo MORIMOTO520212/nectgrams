@@ -8,22 +8,45 @@ $mid = $_POST["mid"];
 $date = $_POST["date"];
 $group = $_POST["group"];
 $contributor = $_POST["contributor"];
-$target = $_POST["target"];
-$do = $_POST["do"];
-$complete = $_POST["complete"];
-$share = $_POST["share"];
 
 $activity = array(
     "kind" => $kind,
     "mid" => $mid,
     "date" => $date,
     "group" => $group,
-    "contributor" => $contributor,
-    "target" => $target,
-    "do" => $do,
-    "complete" => (int)$complete,
-    "share" => $share
+    "contributor" => $contributor
 );
+
+if("person" == $kind){
+    $target = $_POST["target"];
+    $do = $_POST["do"];
+    $complete = $_POST["complete"];
+    $share = $_POST["share"];
+    $activity[] = array(
+        "do" => $do,
+        "complete" => (int)$complete,
+        "share" => $share
+    );
+}
+if("group" == $kind){
+    $do = $_POST["do"];
+    $complete = $_POST["complete"];
+    $activity = array(
+        "kind" => $kind,
+        "mid" => $mid,
+        "date" => $date,
+        "group" => $group,
+        "contributor" => $contributor,
+        "do" => $do,
+        "complete" => (int)$complete
+    );
+}
+if("new" == $kind){
+
+}
+
+
+
 
 $activities_data = file_get_contents("../../database/activities.json");
 $activities_data = mb_convert_encoding($activities_data, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');

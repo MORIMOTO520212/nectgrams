@@ -1,5 +1,6 @@
 <?php
 require "../../container/connect_mysql_users.php";
+require_once "../../vendor/autoload.php";
 
 /* ID PASS LOGIN */
 if("form" == $_POST["type"]){
@@ -16,14 +17,22 @@ if("form" == $_POST["type"]){
 
 /* GOOGLE SIGNIN LOGIN */
 if("g_signin" == $_POST["type"]){
-    $form_gsh = $_POST["g_signin_hash"];
-    $userData = $mysqli->query("SELECT * FROM users WHERE gsh='$form_gsh'")->fetch_row();
-    if($userData){
-        $mysqli->close();
-        echo $userData[3];
+    $id_token = $_POST["g_signin_hash"];
+    $client = new Google_Client(["client_id" => "602046748429-g7tk5ermd7p7vcksmt55eisldsnv51mh.apps.googleusercontent.com"]);
+    $payload = $client->verifyIdToken($id_token);
+    if($payload){
+        $gsh = $payload["sub"];
+        $userData = $mysqli->query("SELECT * FROM users WHERE gsh='$gsh'")->fetch_row();
+        if($userData){
+            $mysqli->close();
+            echo $userData[3]; // mid
+        }else{
+            $mysqli->close();
+            echo false;
+        }
     }else{
-        $mysqli->close();
         echo false;
     }
 }
-?>
+
+

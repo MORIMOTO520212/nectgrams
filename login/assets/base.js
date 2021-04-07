@@ -3,7 +3,7 @@ var element_passwd = document.getElementById("passwd");
 const sha256 = new jsSHA("SHA-256", "TEXT");
 
 /* login */
-function submit(){
+function submit() {
     let id = element_id.value;
     let password = element_passwd.value;
     sha256.update(password);
@@ -28,46 +28,50 @@ function submit(){
 }
 
 
-/* Google Signin */
-function onSignIn(googleUser){
-    let profile = googleUser.getBasicProfile();
-    // user id hash create
-    sha256.update(profile.getId());
-    let hash = sha256.getHash("HEX");
-    console.log(profile.getId());
-    if(!session){
+/* Google onSignIn */
+function onSignIn(googleUser) {
+    var id_token = googleUser.getAuthResponse().id_token;
+    var mid = getCookie("session");
+    if("false" == mid){
+        /* --- Google login --- */
         $.ajax({
             type: "POST",
             url: "assets/login.php",
-            data: {"type": "g_signin", "g_signin_hash": hash},
-            success: function(mid){
-                if(mid){
+            data: {"type": "g_signin", "g_signin_hash": id_token},
+            success: function(mid) {
+                if(mid){ // Succsessful.
                     console.log(mid);
                     document.cookie = "session="+mid+";path=/";
-                }else{
-                    alert("このアカウントではログインできません。\nログインできない場合は関係者に問い合わせてください。");
+                    alert("お使いのGoogleアカウントログインしました。");
+                    setTimeout(function(){location.replace(location.href.replace("/login/",""))}, 1000);
+                }else{  // Failed.
+                    alert("このアカウントではログインできませんでした。\nアカウントを紐づけていない場合は、紐づけてください。");
+                    logout(); // Delete Google Cookie.
                 }
             },
             error: function(){
                 alert("通信エラー.");
             }
         });
-        setTimeout(function(){location.reload()}, 1000);
     }else{
-        if("1" != getCookie("gsh")){
+        /* --- Google SignUp --- */
+        if("false" != mid){ // is not already.
             $.ajax({
                 type: "POST",
                 url: "assets/g_signin_submit.php",
-                data: {"mid": getCookie("session"), "g_signin_hash": hash},
-                success: function(res){
+                data: {"mid": mid, "g_signin_hash": id_token},
+                success: function(res) {
                     if("existed"==res){
-                        console.log("google signin existed."); // sessionにmidを書く
+                        alert("お使いのGoogleアカウントは既に紐づいています。");
                     }else if("completed"==res){
-                    alert("Googleアカウントを正常に紐づけました。");
-                    document.cookie = "gsh=1;path=/";
-                    setTimeout(function(){location.reload()}, 1000);
+                        alert("お使いのGoogleアカウントを正常に紐づけました。");
+                        setTimeout(function(){location.reload()}, 1000);
                     }else if("failed"==res){
-                        alert("Googleアカウントの紐づけに失敗しました。\nコンタクトページから関係者に問い合わせてください。");
+                        alert("お使いのGoogleアカウントの紐づけに失敗しました。\nコンタクトページから関係者に問い合わせてください。");
+                        logout();
+                    }else if("error_payload"==res){
+                        alert("Google認証エラー");
+                        logout();
                     }else{
                         alert(res);
                     }
@@ -76,6 +80,8 @@ function onSignIn(googleUser){
                     alert("通信エラー.");
                 }
             });
+        }else{
+            // gshも紐づけされていてidでログインした後、googleでログインした場合.
         }
     }
 }
