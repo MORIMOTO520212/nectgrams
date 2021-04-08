@@ -33,7 +33,7 @@ $.post("../getData.php", {"dataType": "activity"}, function(getData){
         activities_view("person", "normal"); // initial
     }else{
         activities_view("group", "normal"); // initial
-        document.getElementById("pk_a").setAttribute("onclick", "alert('個人記録はサークルメンバーのみ閲覧することが可能です。');return false;");
+        document.getElementById("pk_a").setAttribute("onclick", "alert('個人記録はサークル内のみ閲覧することが可能です。');return false;");
     }
 });
 
@@ -113,71 +113,163 @@ function activities_view(kind, colum) { // kind - person, group   colum - normal
             ';
         }
     }
+
     if("reverse" == colum){
         for(let i=0; i<activities.length; i++){
-            if(kind != activities[i]["kind"]){continue}
-            source += '\
-            <div class="activity-box">\
-                <div class="box-main">\
-                    <div class="contributor">\
-                        <p>'+activities[i]["date"]+' '+activities[i]["group"]+' '+activities[i]["contributor"]+'</p>\
+            if("person" == kind && "person" == activities[i]["kind"]){
+                source += '\
+                <div class="activity-box">\
+                    <div class="box-main">\
+                        <div class="contributor">\
+                            <p>'+activities[i]["date"]+' '+activities[i]["group"]+' '+activities[i]["contributor"]+'</p>\
+                        </div>\
+                        <div class="main">\
+                            <div class="record">\
+                                <li id="target" class="title">目標</li>\
+                                <div class="contents"><p>'+activities[i]["target"]+'</p></div>\
+                            </div>\
+                            <div class="record">\
+                                <li id="do" class="title">できたこと　達成度：'+activities[i]["complete"]+' %</li>\
+                                <div class="contents"><p>'+activities[i]["do"]+'</p></div>\
+                            </div>\
+                            <div class="record">\
+                                <li id="share" class="title">共有したいこと</li>\
+                                <div class="contents"><p>'+activities[i]["share"]+'</p></div>\
+                            </div>\
+                        </div>\
                     </div>\
-                    <div class="main">\
-                        <div class="record">\
-                            <li id="target" class="title">目標</li>\
-                            <div class="contents"><p>'+activities[i]["target"]+'</p></div>\
-                        </div>\
-                        <div class="record">\
-                            <li id="do" class="title">できたこと　達成度：'+activities[i]["complete"]+' %</li>\
-                            <div class="contents"><p>'+activities[i]["do"]+'</p></div>\
-                        </div>\
-                        <div class="record">\
-                            <li id="share" class="title">共有したいこと</li>\
-                            <div class="contents"><p>'+activities[i]["share"]+'</p></div>\
+                </div>';
+            }
+            if("group" == kind){
+                if("group" == activities[i]["kind"]){
+                    source += '\
+                    <div class="activity-box">\
+                        <div class="box-main">\
+                            <div class="contributor">\
+                                <p>'+activities[i]["date"]+' '+activities[i]["group"]+' '+activities[i]["contributor"]+'</p>\
+                            </div>\
+                            <div class="main">\
+                                <div class="record">\
+                                    <li id="do" class="title">活動状況　完成度：'+activities[i]["complete"]+'</li>\
+                                    <div class="contents"><p>'+activities[i]["do"]+'</p></div>\
+                                </div>\
+                            </div>\
                         </div>\
                     </div>\
-                </div>\
-            </div>';
+                    ';
+                }
+                if("new" == activities[i]["kind"]){
+                    source += '\
+                    <div class="activity-box">\
+                        <div class="box-main">\
+                            <div class="contributor">\
+                                <p>'+activities[i]["date"]+' '+activities[i]["group"]+' '+activities[i]["contributor"]+'</p>\
+                            </div>\
+                            <div class="main">\
+                                <div class="record">\
+                                    <li class="title">班員</li>\
+                                    <div class="contents"><p>'+activities[i]["member"]+'</p></div>\
+                                </div>\
+                                <div class="record">\
+                                    <li class="title">製作物</li>\
+                                    <div class="contents"><p>'+activities[i]["product"]+'</p></div>\
+                                    </div>\
+                                <div class="record">\
+                                    <li class="title">活動内容</li>\
+                                    <div class="contents"><p>'+activities[i]["activity"]+'</p></div>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </div>\
+                    ';
+                }
+            }
         }
         e_colum_normal.setAttribute("style","");
         e_cn_p.setAttribute("style","");
         e_colum_reverse.setAttribute("style","background-color:#3d3c4c;");
         e_cr_p.setAttribute("style", "color:#eee;");
     }
+
     if("normal" == colum){
         for(let i=activities.length-1; 0<=i; i--){
-            if(kind != activities[i]["kind"]){continue}
-            source += '\
-            <div class="activity-box">\
-                <div class="box-main">\
-                    <div class="contributor">\
-                        <p>'+activities[i]["date"]+' '+activities[i]["group"]+' '+activities[i]["contributor"]+'</p>\
+            if("person" == kind && "person" == activities[i]["kind"]){
+                source += '\
+                <div class="activity-box">\
+                    <div class="box-main">\
+                        <div class="contributor">\
+                            <p>'+activities[i]["date"]+' '+activities[i]["group"]+' '+activities[i]["contributor"]+'</p>\
+                        </div>\
+                        <div class="main">\
+                            <div class="record">\
+                                <li id="target" class="title">目標</li>\
+                                <div class="contents"><p>'+activities[i]["target"]+'</p></div>\
+                            </div>\
+                            <div class="record">\
+                                <li id="do" class="title">できたこと　達成度：'+activities[i]["complete"]+' %</li>\
+                                <div class="contents"><p>'+activities[i]["do"]+'</p></div>\
+                            </div>\
+                            <div class="record">\
+                                <li id="share" class="title">共有したいこと</li>\
+                                <div class="contents"><p>'+activities[i]["share"]+'</p></div>\
+                            </div>\
+                        </div>\
                     </div>\
-                    <div class="main">\
-                        <div class="record">\
-                            <li id="target" class="title">目標</li>\
-                            <div class="contents"><p>'+activities[i]["target"]+'</p></div>\
-                        </div>\
-                        <div class="record">\
-                            <li id="do" class="title">できたこと　達成度：'+activities[i]["complete"]+' %</li>\
-                            <div class="contents"><p>'+activities[i]["do"]+'</p></div>\
-                        </div>\
-                        <div class="record">\
-                            <li id="share" class="title">共有したいこと</li>\
-                            <div class="contents"><p>'+activities[i]["share"]+'</p></div>\
+                </div>';
+            }
+            if("group" == kind){
+                if("group" == activities[i]["kind"]){
+                    source += '\
+                    <div class="activity-box">\
+                        <div class="box-main">\
+                            <div class="contributor">\
+                                <p>'+activities[i]["date"]+' '+activities[i]["group"]+' '+activities[i]["contributor"]+'</p>\
+                            </div>\
+                            <div class="main">\
+                                <div class="record">\
+                                    <li id="do" class="title">活動状況　完成度：'+activities[i]["complete"]+'</li>\
+                                    <div class="contents"><p>'+activities[i]["do"]+'</p></div>\
+                                </div>\
+                            </div>\
                         </div>\
                     </div>\
-                </div>\
-            </div>';
+                    ';
+                }
+                if("new" == activities[i]["kind"]){
+                    source += '\
+                    <div class="activity-box">\
+                        <div class="box-main">\
+                            <div class="contributor">\
+                                <p>'+activities[i]["date"]+' '+activities[i]["group"]+' '+activities[i]["contributor"]+'</p>\
+                            </div>\
+                            <div class="main">\
+                                <div class="record">\
+                                    <li class="title">班員</li>\
+                                    <div class="contents"><p>'+activities[i]["member"]+'</p></div>\
+                                </div>\
+                                <div class="record">\
+                                    <li class="title">製作物</li>\
+                                    <div class="contents"><p>'+activities[i]["product"]+'</p></div>\
+                                    </div>\
+                                <div class="record">\
+                                    <li class="title">活動内容</li>\
+                                    <div class="contents"><p>'+activities[i]["activity"]+'</p></div>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </div>\
+                    ';
+                }
+            }
         }
         e_colum_reverse.setAttribute("style","");
         e_cr_p.setAttribute("style","");
         e_colum_normal.setAttribute("style","background-color:#3d3c4c;");
         e_cn_p.setAttribute("style", "color:#eee;");
     }
-
     e_activities.innerHTML = source;
 
+    /* activity control style */
     if("person" == kind){
         e_group_kind.setAttribute("style","");
         e_gk_p.setAttribute("style","");
@@ -189,7 +281,7 @@ function activities_view(kind, colum) { // kind - person, group   colum - normal
         e_pk_p.setAttribute("style","");
         e_group_kind.setAttribute("style","background-color:#3d3c4c;");
         e_gk_p.setAttribute("style", "color:#eee;");
-        activity_control("group");
+        if(session) activity_control("group"); // init
     }
     
 }
@@ -210,7 +302,26 @@ function activity_control(control) {
         e_ak_new.setAttribute("style","background-color:#3d3c4c;");
         e_ak_new_p.setAttribute("style", "color:#eee;");
         e_submit.setAttribute("href", "javascript:submit('new')");
-        e_ak_contents.innerHTML = '';
+        e_ak_contents.innerHTML = '\
+        <div class="record">\
+            <li class="title">班員</li>\
+            <div class="contents">\
+                <textarea id="member" placeholder="班長,班員1,班員2, ..."></textarea>\
+            </div>\
+        </div>\
+        <div class="record">\
+            <li class="title">製作物</li>\
+            <div class="contents">\
+                <textarea id="product" placeholder="製作物を記入してください。"></textarea>\
+            </div>\
+            </div>\
+        <div class="record">\
+            <li class="title">活動内容</li>\
+            <div class="contents">\
+                <textarea id="activity" placeholder="活動内容を記入してください。"></textarea>\
+            </div>\
+        </div>\
+        ';
     }
     if("group" == control){
         e_ak_new.setAttribute("style","");
@@ -296,12 +407,21 @@ function submit(kind) {
         }
     }
     if("new" == kind){
+        let e_member = document.getElementById("member");
+        let e_product = document.getElementById("product");
+        let e_activity = document.getElementById("activity");
+        let member = e_member.value;
+        let product = e_product.value;
+        let activity = e_activity.value;
         contents = {
             "kind": "new",
             "mid": mid,
             "date": date,
             "group": group,
-            "contributor": contributor
+            "contributor": contributor,
+            "member": member,
+            "product": product,
+            "activity": activity
         }
     }
 

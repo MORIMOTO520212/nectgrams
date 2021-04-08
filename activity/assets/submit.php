@@ -22,31 +22,24 @@ if("person" == $kind){
     $do = $_POST["do"];
     $complete = $_POST["complete"];
     $share = $_POST["share"];
-    $activity[] = array(
-        "do" => $do,
-        "complete" => (int)$complete,
-        "share" => $share
-    );
+    $activity["do"] = $do;
+    $activity["complete"] = (int)$complete;
+    $activity["share"] = $share;
 }
 if("group" == $kind){
     $do = $_POST["do"];
     $complete = $_POST["complete"];
-    $activity = array(
-        "kind" => $kind,
-        "mid" => $mid,
-        "date" => $date,
-        "group" => $group,
-        "contributor" => $contributor,
-        "do" => $do,
-        "complete" => (int)$complete
-    );
+    $activity["do"] = $do;
+    $activity["complete"] = (int)$complete;
 }
 if("new" == $kind){
-
+    $member = $_POST["member"];
+    $product = $_POST["product"];
+    $activity_ = $_POST["activity"];
+    $activity["member"] = $member;
+    $activity["product"] = $product;
+    $activity["activity"] = $activity_;
 }
-
-
-
 
 $activities_data = file_get_contents("../../database/activities.json");
 $activities_data = mb_convert_encoding($activities_data, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');

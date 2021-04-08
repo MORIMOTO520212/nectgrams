@@ -8,7 +8,7 @@ const mkdn_container = {
     "#": "<p class='header header1'>$t</p>",
     "##": "<p class='header header2'>$t</p>",
     "###": "<p class='header header3'>$t</p>",
-    "link": "<a class='link' href='$l'>$t<a>",
+    "link": "<a class='link' href='$l' target='_blank' rel='noopener'>$t<a>",
     "list": "<li>$t</li>",
     "bold": "<p class='bold'>$t</p>"
 }
@@ -35,7 +35,7 @@ function markdown(data){
         }
         if(textline[i].match(/\[.*\]\(.*\)/)){
             let title = text.replace(/[\[\]]/g,"").replace(/\(.*\)/g, "");
-            let link = text.replace(/\[.*\]/).replace(/[\(\)]/g, "");
+            let link = text.replace(/\[.*\]/,"").replace(/[\(\)]/g,"");
             source += mkdn_container["link"].replace("$t", title).replace("$l", link);
             continue;
         }
