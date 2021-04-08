@@ -325,7 +325,7 @@ div.smart-footer .f-main .f-msg p{
     color: #eee;
 }
 
-@media screen and (max-width: 1300px){
+@media screen and (max-width: 1480px){
     div.m_b .msg{
         font-size: 1.5vw;
     }
@@ -334,6 +334,17 @@ div.smart-footer .f-main .f-msg p{
     }
     div.faq-box .question .q-msg{
         font-size: 1.3vw;
+    }
+}
+@media screen and (max-width: 1200px){
+    div.m_b .msg{
+        font-size: 1.6vw;
+    }
+    div.m_b .msg .msg{
+        font-size: 1.6vw;
+    }
+    div.faq-box .question .q-msg{
+        font-size: 1.4vw;
     }
 }
 @media screen and (max-width: 1100px){
