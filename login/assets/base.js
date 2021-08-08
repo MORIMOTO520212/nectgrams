@@ -24,7 +24,7 @@ function submit() {
             alert("通信エラー.");
         }
     });
-    setTimeout(function(){location.reload();}, 1000);
+    setTimeout(function(){location.reload()}, 1000); // wait 1 sec
 }
 
 

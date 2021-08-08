@@ -8,7 +8,6 @@ $session = sessionCheck($mysqli); // return true or false.
 // get products json data
 $topics_data = file_get_contents("database/topics.json");
 $topics_data = json_encode($topics_data);
-var_dump($topics_data);
 //$products_data = mb_convert_encoding($products_data, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
 //$products = json_decode($products_data, true);
 ?>

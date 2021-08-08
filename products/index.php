@@ -35,40 +35,42 @@ $mysqli->close();
             <div id="products">
                 <?php
                     if($session){ // echo "の後に改行しないとcssのbeforeとafterが反映されない
-                        echo '
-                        <div class="product-box">
-                            <div class="box-main">
-                                <div id="drag-area" class="image hover">
-                                    <img id="setimg" src="assets/add.png">
-                                    <input type="file" multiple="multiple" style="display:none;" name="files"/>
-                                    <button id="btn">ファイルを選択</button>
-                                    <div class="create-btn document"><a href="javascript:documentWrite();">内容</a></div>
-                                    <div class="create-btn submit"><a href="javascript:submit();">投稿</a></div>
-                                </div>
-                                <div class="text">
-                                    <input id="header" type="text" placeholder="ここへタイトル">
-                                    <textarea id="message" placeholder="ここへメッセージ"></textarea>
-                                </div>
-                            </div>
-                        </div>';
+                ?>
+                <div class="product-box">
+                    <div class="box-main">
+                        <div id="drag-area" class="image hover">
+                            <img id="setimg" src="assets/add.png">
+                            <input type="file" multiple="multiple" style="display:none;" name="files"/>
+                            <button id="btn">ファイルを選択</button>
+                            <div class="create-btn document"><a href="javascript:documentWrite();">内容</a></div>
+                            <div class="create-btn submit"><a href="javascript:submit();">投稿</a></div>
+                        </div>
+                        <div class="text">
+                            <input id="header" type="text" placeholder="ここへタイトル">
+                            <textarea id="message" placeholder="ここへメッセージ"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <?php
                     }
                     $i=0;
                     foreach($products as $product){
-                        echo '
-                        <div class="product-box">
-                            <a href="javascript:document_view('.$i.')"></a>
-                            <div class="box-main">
-                                <div class="image">
-                                    <img src="../'.$product["photo"].'">
-                                    <div class="date"><p>'.$product["date"].'</p></div>
-                                </div>
-                                <div class="text">
-                                    <p class="header">'.$product["title"].'</p>
-                                    <p>'.str_replace("\n", "<br>", $product["message"]).'</p>
-                                </div>
-                            </div>
-                        </div>';
-                        $i++;
+                ?>
+                <div class="product-box">
+                    <a href="javascript:document_view(<?php echo $i ?>)"></a>
+                    <div class="box-main">
+                        <div class="image">
+                            <img src="../<?php echo $product["photo"]?>">
+                            <div class="date"><p><?php echo $product["date"] ?></p></div>
+                        </div>
+                        <div class="text">
+                            <p class="header"><?php echo $product["title"]?></p>
+                            <p><?php echo str_replace("\n", "<br>", $product["message"])?></p>
+                        </div>
+                    </div>
+                </div>
+                <?php
+                    $i++;
                     }
                 ?>
             </div>
